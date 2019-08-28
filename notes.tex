@@ -6,6 +6,8 @@
     
     % Related to math
     \usepackage{amsmath,amssymb,amsfonts,amsthm}
+    \usepackage{multicol}
+    \usepackage{commath}
 
     % Metadata for front page
     \title{Statistical Inference Study Notes}
@@ -13,25 +15,191 @@
     \date{2019, Spring}
 
     % Numbered environments
-    \newtheorem{theorem}{Theorem}
+    \newtheorem{innertheorem}{Theorem}
+    \newenvironment{theorem}[1]
+      {\renewcommand\theinnertheorem{#1}\innertheorem}
+      {\endinnertheorem}
+
+    \newtheorem{innerdefinition}{Definition}
+    \newenvironment{definition}[1]
+      {\renewcommand\theinnerdefinition{#1}\innerdefinition}
+      {\endinnerdefinition}
+
+    % Aliases
+    \renewcommand{\vec}[1]{\boldsymbol{#1}}
+    \newcommand{\E}[1]{\mathrm{\mathb{E} \left[#1 \right]}}
+    \newcommand{\Var}[1]{\mathrm{Var \left(#1 \right)}}
 
 \begin{document}
 
 \maketitle
 
+\begin{multicols}{2}
+
 \section{Probability Theory}
 
 \section{Transformations and Expectations}
 
-\section{Common Families of Distributions}
-
-\begin{theorem}[Moment generating functions for linear transformations]
+\begin{theorem}{2.3.15}[Moment generating functions for linear transformations]
   For any constants $a$ and $b$, the mgf of the random variable $aX + b$ is given by
   $$
   M_{aX + b}(t) = e^{bt} M_X(at)
   $$
 \end{theorem}
 
+\section{Common Families of Distributions}
 
+\begin{theorem}{3.2.2}[Binomial Theorem]
+  For any real numbers $x$ and $y$ and integer $n \geq 0$,
+  $$
+    (x + y)^n = \sum_{i = 0}^{n} \binom{n}{i} x^i y^{n-1}
+  $$
+\end{theorem}
 
+\begin{definition}{3.4.1}[Exponential Family of Distributions]
+  The exponential family consists of all pdfs and pmfs that can be expressed as
+  $$
+  f(x | \vec{\theta})
+  =
+  h(x) c(\vec{\theta}) \exp\left(
+    \sum_{i = 1}^k w_i(\vec{\theta}) t_i(x)
+  \right),
+  $$
+  where $h(x) \geq 0$ and $c(\vec{\theta}) \geq 0$.
+
+  An alternative natural parametrization is
+  $$
+    f(x | \eta) = h(x) c^*(\eta) \exp \left( \sum_{i=1}^k \eta_i t_i(x) \right).
+  $$
+  The natural parameter space for the family is then given as
+  $$
+    \mathcal{H} = \left\{
+      \eta = (\eta_1, ..., \eta_k):
+        \int_{-\infty}^{\infty} h(x) \exp \left(
+          \sum_{i=1}^k \eta_i t_i(x)
+        \right)
+    \right\},
+  $$
+  for which me must have
+  $$
+    c^*(\eta) = \left[
+      \int_{-\infty}^{\infty}
+        h(x) \exp \left( \sum_{i=1}^k \eta_i t_i(x) \right)
+        \dif x
+    \right]^{-1}.
+  $$
+\end{definition}
+
+\begin{theorem}{3.4.2}[Exponential Family Statistics]
+  \begin{align}
+    \E{
+      \sum_{i = 1}^k \pd{w_i(\vec{\theta})}{\theta_j} t_i(X)
+    }
+    &=
+    -\pd{}{\theta_j} \log c(\vec{\theta})
+    \\
+    \Var{
+      \sum_{i = 1}^k \pd{w_i(\vec{\theta})}{\theta_j} t_i(X)
+    }
+    &=
+    -\pd[2]{}{\theta_j} \log c(\vec{\theta})
+    -\E{\sum_{i = 1}^k \pd[2]{w_i(\vec{\theta})}{\theta_j} t_i(X)}
+  \end{align}
+\end{theorem}
+
+\begin{definition}{3.4.7}[Curved Exponential Family]
+  A curved exponential family is a family of densities of the form (3.4.1)
+  for which the dimension of the vector $\vec{\theta}$ is equal to $d < k$.
+  If $d = k$, the family is a full exponential family.
+\end{definition}
+
+\begin{theorem}{3.5.1}
+  Let $f(x)$ be any pdf and let $\mu$ and $\sigma > 0$ be any given constants. Then the function
+  $$
+    g(x | \mu, \sigma) = \frac{1}{\sigma} f\del{\frac{x - \mu}{\sigma}}
+  $$
+  is a pdf.
+\end{theorem}
+
+\begin{definition}{3.5.2}[Location Family of Distributions]
+  Let $f(x)$ be any pdf. Then the family of pdfs $f(x - \mu)$,
+  indexed by the parameter $\mu$, $-\infty < \mu < \infty$,
+  is called the location family with standard pdf $f(x)$
+  and $-\mu$ is called the location parameter of the family.
+\end{definition}
+
+\begin{definition}{3.5.4}[Scale Family of Distributions]
+  Let $f(x)$ be any pdf.
+  Then for any $\sigma > 0$, the family of pdfs $\frac{1}{\sigma} f (\frac{x}{\sigma})$,
+  indexed by the parameter $\sigma$, is called the scale family with standard pdf $f(x)$
+  and $\sigma$ is called the scale parameter of the family.
+\end{definition}
+
+\begin{definition}{3.5.4}[Location-Scale Family of Distributions]
+  Let $f(x)$ be any pdf.
+  Then for any $\mu$, $-\infty < \mu < \infty$, and any $\sigma > 0$,
+  the family of pdfs $\frac{1}{\sigma} f(\frac{x - \mu}{\sigma})$,
+  indexed by the parameter $(\mu, \sigma)$,
+  is called the location-scale family with standard pdf $f(x)$;
+  $\mu$ is called the location parameter
+  and $\sigma$ is called the scale parameter of the family.
+\end{definition}
+
+\begin{definition}{3.5.4}
+  Let $f(\cdot)$ be any pdf. Let $\mu$ be any real number,
+  and let $\sigma$ be any positive real number.
+  Then $X$ is a random variable with pdf $\frac{1}{\sigma} f\del{\frac{x - \mu}{\sigma}}$
+  if and only if there exists a random variable $Z$ with pdf $f(z)$ and $X = \sigma Z + \mu$.
+\end{definition}
+
+\begin{definition}{3.5.7}
+  Let $Z$ be a random variable with pdf $f(z)$. Suppose $\E{Z}$ and $\Var{Z}$ exist.
+  If $X$ is a random variable with pdf $\frac{1}{\sigma} f\del{\frac{x - \mu}{\sigma}}$,
+  then
+  $$
+    \E{X} = \sigma \E{Z} + \mu,\text{ and } \Var{X} = \sigma^2 \Var{Z}.
+  $$
+  In particular, if $\E{Z} = 0$ and $\Var{Z} = 1$, then $\E{X} = \mu$ and $\Var{X} = \sigma^2$.
+\end{definition}
+
+\begin{theorem}{3.6.1}[Chebychev's Inequality]
+  Let $X$ be a random variable and let $g(x)$ be a nonnegative function. Then, for any $r > 0$,
+  $$
+  P\del{g(X) \geq r} \geq \frac{\E{g(X)}}{r}.
+  $$
+
+  This can be used in order to find the following bounds
+  \begin{align}
+    P\del{\left| X - \mu \right| \geq t\sigma} &\leq \frac{1}{t^2}
+    \\
+    P\del{\left| X - \mu \right| < t\sigma} &\geq 1 - \frac{1}{t^2}
+  \end{align}
+\end{theorem}
+
+\newpage
+\appendix
+
+\section{Appendix}
+
+\subsubsection*{Binomial Coefficient Identities}
+
+\begin{align}
+  \binom{n}{x} &= \frac{n!}{x!(n-x)!}
+  \\
+  x \binom{n}{x} &= n \binom{n - 1}{x - 1}
+  \\
+  \binom{n}{x} &= \frac{n}{x} \binom{n - 1}{x - 1}
+\end{align}
+
+\subsubsection*{Gamma function}
+
+\begin{align}
+  \Gamma(\alpha + 1) &= \alpha \Gamma(\alpha) &\alpha > 0
+  \\
+  \Gamma(n) &= (n - 1)! &\n \text{positive integer}
+  \\
+  \Gamma \left( \frac{1}{2} \right) &= \sqrt{\pi}
+\end{align}
+
+\end{multicol}
 \end{document}
