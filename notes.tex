@@ -9,21 +9,38 @@
     \usepackage{multicol}
     \usepackage{commath}
 
+    % Better enumeration support
+    \usepackage{enumitem}
+
     % Metadata for front page
     \title{Statistical Inference Study Notes}
     \author{Jakob Gerhard Martinussen}
     \date{2019, Spring}
 
     % Numbered environments
+    \theoremstyle{plain}
     \newtheorem{innertheorem}{Theorem}
     \newenvironment{theorem}[1]
       {\renewcommand\theinnertheorem{#1}\innertheorem}
       {\endinnertheorem}
 
+    \theoremstyle{definition}
     \newtheorem{innerdefinition}{Definition}
     \newenvironment{definition}[1]
       {\renewcommand\theinnerdefinition{#1}\innerdefinition}
       {\endinnerdefinition}
+
+    \theoremstyle{plain}
+    \newtheorem{innerlemma}{Lemma}
+    \newenvironment{lemma}[1]
+      {\renewcommand\theinnerlemma{#1}\innerlemma}
+      {\endinnerlemma}
+
+    \theoremstyle{plain}
+    \newtheorem{innercorollary}{Corollary}
+    \newenvironment{corollary}[1]
+      {\renewcommand\theinnercorollary{#1}\innercorollary}
+      {\endinnercorollary}
 
     % Aliases
     \renewcommand{\vec}[1]{\boldsymbol{#1}}
@@ -37,6 +54,15 @@
 \begin{multicols}{2}
 
 \section{Probability Theory}
+
+\begin{definition}{1.3.2}[Conditional Probability]
+  If $A$ and $B$ are events in $S$, and $P(B) > 0$,
+  then the \textit{conditional probability of $A$ given $B$},
+  written $P(A | B)$ is
+  \begin{equation*}
+    P(A|B) = \frac{P(A \cap B)}{P(B)}.
+  \end{equation*}
+\end{definition}
 
 \section{Transformations and Expectations}
 
@@ -194,6 +220,331 @@
     \\
     P\del{\left| X - \mu \right| < t\sigma} &\geq 1 - \frac{1}{t^2}
   \end{align}
+\end{theorem}
+
+\section{Multiple Random Variables}
+
+\begin{definition}{4.1.1}[n-dimensional random vector]
+  An \textit{n-dimensional random vector} is a function from a sample space $S$ into $\mathfrak{R}^n$,
+  $n$-dimensional Euclidean space.
+\end{definition}
+
+\begin{definition}{4.1.3}[Joint probability mass function]
+  Let $(X, Y)$ be a discrete bivariate random vector.
+  Then the function $f(x, y)$ from $\mathfrak{R}^2$ into $\mathfrak{R}$ defined by
+  $f(x, y) = P(X = x, Y = y)$ is called the \textit{joint probability mass function} or
+  \textit{joint pmf} of $(X, Y)$. If it is necessary to stress the fact that $f$ is the
+  joint pmf of the vector $(X, Y)$ rather than som other vector, the notation $f_{X,Y}(x, y)$
+  will be used.
+\end{definition}
+
+\begin{theorem}{4.1.6}[Marginal distribution]
+  Let $(X, Y)$ be a discrete bivariate random vector with joint pmf $f_{X,Y}(x,y)$.
+  Then the marginal pmfs of $X$ and $Y$, $f_{X}(x) = P(X = x)$ and $f_{Y}(y) = P(Y = y)$,
+  are given by
+  \begin{equation*}
+    f_{X}(x) = \sum_{y \in \mathfrak{R}} f_{X,Y}(x,y) 
+    ~~~\text{ and }~~~
+    f_{Y}(y) = \sum_{x \in \mathfrak{R}} f_{X,Y}(x,y) 
+  \end{equation*}
+\end{theorem}
+
+\begin{definition}{4.1.10}[Joint probability density function]
+  A function $f(x, y)$ from $\mathfrak{R}^2$ into $\mathfrak{R}$ is called a
+  \textit{joint probability density function} or \textit{joint pdf of the continuous bivariate
+  random vector} $(X, Y)$ if, for every $A \subset \mathfrak{R}^2$,
+  \begin{equation*}
+    P((X,Y) \in A) = \int \limits_{A} \int f(x,y) \dif{x} \dif{y}
+  \end{equation*}
+\end{definition}
+
+\begin{definition}{4.2.1}[Conditional PMF]
+  Let $(X,Y)$ be a discrete bivariate random vector with joint pmf $f(x,y)$ and marginal pmfs
+  $f_{X}(x)$ and $f_{Y}(y)$. For any $x$ such that $P(X=x) = f_{X}(x) > 0$,
+  the \textit{conditional pmf of $Y$ given that $X = x$} is the function of $y$
+  denoted by $f(y | x)$ and defined by
+  \begin{equation*}
+    f(y|x) = P(Y = y | X = x) = \frac{f(x, y)}{f_{X}(x)}.
+  \end{equation*}
+  For any $y$ such that $P(Y=y) = f_{Y}(y) > 0$,
+  the \textit{conditional pmf of $X$ given that $Y = y$} is the function of $x$
+  denoted by $f(x | y)$ and defined by
+  \begin{equation*}
+    f(x|y) = P(X = x | Y = y) = \frac{f(x, y)}{f_{Y}(y)}.
+  \end{equation*}
+\end{definition}
+
+\begin{definition}{4.2.1}[Conditional PDF]
+  Let $(X,Y)$ be a continous bivariate random vector with joint pdf $f(x,y)$ and marginal pdfs
+  $f_{X}(x)$ and $f_{Y}(y)$. For any $x$ such that $f_{X}(x) > 0$,
+  the \textit{conditional pdf of $Y$ given that $X = x$} is the function of $y$
+  denoted by $f(y | x)$ and defined by
+  \begin{equation*}
+    f(y|x) = \frac{f(x, y)}{f_{X}(x)}.
+  \end{equation*}
+  For any $y$ such that $f_{Y}(y) > 0$,
+  the \textit{conditional pmf of $X$ given that $Y = y$} is the function of $x$
+  denoted by $f(x | y)$ and defined by
+  \begin{equation*}
+    f(x|y) = \frac{f(x, y)}{f_{Y}(y)}.
+  \end{equation*}
+\end{definition}
+
+\begin{definition}{4.2.5}[Independent Random Variables]
+  Let $(X, Y)$ be a bivariate random vector with joint pdf or pmf $f(x, y)$
+  and marginal pdfs or pmfs $f_X(x)$ and $f_Y(y)$.
+  Then $X$ and $Y$ are called \textit{independent random variables} if,
+  for every $x \in \mathfrak{R}$ and $y \in \mathfrak{R}$,
+  \begin{equation}
+    f(x, y) = f_X(x) f_Y(y).
+  \end{equation}
+\end{definition}
+
+\begin{lemma}{4.2.7}[Verifying Independence]
+  Let $(X,Y)$ be a bivariate  random vector with joint pdf or pmf $f(x,y)$.
+  Then $X$ and $Y$ are independent random variables if and only if there exist functions
+  $g(x)$ and $h(y)$ such that, for every $x \in \mathfrak{R}$ and $y \in \mathfrak{R}$,
+  \begin{equation*}
+    f(x, y) = g(x) h(y)
+  \end{equation*}
+\end{lemma}
+
+\begin{theorem}{4.2.10}[Independent Events and Expectations]
+  Let $X$ and $Y$ be independent random variables.
+  \begin{enumerate}[label=\alph*.]
+    \item For any $A \subset \mathfrak{R}$ and $B \subset \mathfrak{R}$,
+      $P(X \in A, Y \in B) = P(X \in A) P(Y \in B)$, that is, the events
+      $\{X \in A\}$ and $\{Y \in B\}$ are independent events.
+    \item Let $g(x)$ be a function only of $x$ and $h(y)$ be a function only of $y$. Then
+      \begin{equation*}
+        \E{g(X) h(Y)} = \E{g(X)} \E{h(Y)}.
+      \end{equation*}
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}{4.2.12}[MGF of Sum of Independent Variables]
+  Let $X$ and $Y$ be independent random variables with moment generating functions
+  $M_{X}(t)$ and $M_{Y}(t)$. Then the moment generating function of the random variable
+  $Z = X + Y$ is given by
+  \begin{equation*}
+    M_Z(t) = M_X(t) M_Y(t).
+  \end{equation*}
+\end{theorem}
+
+\begin{theorem}{4.2.14}[Sum of Two Random Normal Variables]
+  Let $X \sim \mathcal{N}(\mu, \sigma^{2})$ and $Y \sim \mathcal{N}(\gamma, \tau^{2})$
+  be independent normal random variables. Then the random variable $Z = X + Y$ has
+  a $\mathcal{N}(\mu + \tau, \sigma^{2} + \tau^{2})$ distribution.
+\end{theorem}
+
+\begin{theorem}{4.3.2}[]
+  If $X \sim \text{Poisson}(\theta)$ and $Y \sim \text{Poisson}(\lambda)$
+  and $X$ and $Y$ are independent, then $X + Y \sim \text{Poisson}(\theta + \lambda)$.
+\end{theorem}
+
+\begin{theorem}{4.4.3}[Law of Double Expectation]
+  If $X$ and $Y$ are any two random variables, then
+  \begin{equation*}
+    \E{X} = \E{\E{X | Y}},
+  \end{equation*}
+  provided that the expectations exist.
+\end{theorem}
+
+\begin{theorem}{4.4.7}[Conditional Variance Identity]
+  For any two random variables $X$ and $Y$,
+  \begin{equation*}
+    \Var{X} = \E{\Var{X | Y}} + \Var{\E{X | Y}},
+  \end{equation*}
+  provided that the expectations exist.
+\end{theorem}
+
+\begin{definition}{4.5.1}[Covariance]
+  The \textit{covariance of $X$ and $Y$} is the number defined by
+  \begin{equation*}
+    Cov(X, Y) = \E{(X - \mu_X)(Y - \mu_Y)}.
+  \end{equation*}
+\end{definition}
+
+\begin{definition}{4.5.2}[Correlation]
+  The \textit{correlation of $X$ and $Y$} is the number defined by
+  \begin{equation*}
+    \rho_{XY} = \frac{\text{Cov}(X, Y)}{\sigma_X \sigma_Y}.
+  \end{equation*}
+  The value $\rho_{XY}$ is also called the \textit{correlation coefficient}.
+\end{definition}
+
+\begin{theorem}{4.5.3}
+  For any random variables $X$ and $Y$,
+  \begin{equation*}
+    \text{Cov}(X, Y) = \E{XY} - \mu_X \mu_Y
+  \end{equation*}
+\end{theorem}
+
+\begin{theorem}{4.5.5}
+  If $X$ and $Y$ are independent random variables, then $\text{Cov}(X, Y) = 0$
+  and $\rho_{XY} = 0$.
+\end{theorem}
+
+\begin{theorem}{4.5.6}
+  If $X$ and $Y$ are any two random variables and $a$ and $b$ are any two
+  constants, then
+  \begin{equation*}
+    \text{Var}(aX + bY)
+    =
+    a^{2} \text{Var}(X) + b^{2} \text{Var}(Y) + 2ab \text{Cov}(X, Y)
+  \end{equation*}
+\end{theorem}
+
+\begin{definition}{4.4.4}[Mixture Distribution]
+  A random variable $X$ is said to have a \textit{mixture distribution}
+  if the distribution of $X$ depends on a quantity that also has a distribution.
+\end{definition}
+
+\begin{theorem}{4.5.7}
+  For any random variables $X$ and $Y$,
+  \begin{enumerate}[label=\alph*.]
+    \item $-1 \leq \rho_{XY} \leq 1$.
+    \item $|\rho_{XY}| = 1$ if and only if there exist numbers $a \neq 0$
+      and $b$ such that $P(Y = aX + b) = 1$.
+      If $\rho_{XY} = 1$, then $a > 0$, and if $\rho_{XY} = -1$, then $a < 0$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{definition}{4.6.2}[Multinomial Distribution]
+  Let $n$ and $m$ be positive integers and let $p_1, ..., p_n$ be numbers satisfying
+  $0 \leq p_i \leq 1, i = 1, ..., n$ and $\sum_{i=1}^n p_i = 1$.
+  Then the random vector $(X_1, ..., X_n)$ has a
+  \textit{multinomial distribution with $m$ trials and cell probabilities $p_1, ..., p_n$}
+  if the joint pmf of $(X_1, ..., X_n)$ is
+  \begin{equation*}
+    f(x_1, ..., x_n)
+    = \frac{m!}{x_1!...x_n!} p_1^{x_1} ... p_n^{x_n}
+    = m! \prod_{i=1}^n \frac{p_i^{x_i}}{x_i!}
+  \end{equation*}
+  on the set of $(x_1, ..., x_n)$ such that each $x_i$ is a nonnegative integer
+  and $\sum_{i = 1}^n x_i = m$.
+\end{definition}
+
+\begin{theorem}{4.6.2}[Multinomial Theorem]
+  Let $m$ and $n$ be positive integers.
+  Let $\mathcal{A}$ be the set of vectors $\vec{x} = (x_1, ..., x_n)$
+  such that each $x_i$ is a nonnegative integer
+  and $\sum \limits_{i=1}^{n} x_i = m$. Then, for any real numbers $p_1, ..., p_n$,
+  \begin{equation*}
+    (p_1 + ... + p_n)^m
+    =
+    \sum_{x \in \mathcal{A}} \frac{m!}{x_1! ... x_n!} p_1^{x_1} ... p_n^{x_n}.
+  \end{equation*}
+\end{theorem}
+
+\begin{definition}{4.6.5}
+  Let $\vec{X}_1, ..., \vec{X}_n$ be random vectors with joint pdf or pmf
+  $f(\vec{x}_1, ..., \vec{x}_n)$. Let $f_{\vec{X}_i}(\vec{x}_i)$ denote the
+  marginal pdf or pmf of $\vec{X}_i$. Then $\vec{X_1}, ..., \vec{X_n}$
+  are called \textit{mutually independent random vectors} if, for every
+  $(\vec{x}_1, ..., \vec{x}_n)$,
+  \begin{equation*}
+    f(\vec{x}_1, ..., \vec{x}_n) = \prod_{i = 1}^{n} f_{\vec{X}_i}(\vec{x}_i).
+  \end{equation*}
+  If the $X_i$s are alle one-dimensional, then $X_1, ..., X_n$ are called
+  \textit{mutually independent random variables}.
+\end{definition}
+
+\begin{theorem}{4.6.6}[]
+  Let $X_1, ..., X_n$ be mutually independent random variables.
+  Let $g_1, ..., g_n$ be real-valued functions such that $g_i(x_i)$ is a function
+  only of $x_i, i = 1, ..., n$.
+  Then
+  \begin{equation*}
+    \E{g_1(X_1) \cdot ... \cdot g_n(X_n)}
+    =
+  \E{g_1(X_1)} \cdot ... \cdot \E{g_n(X_n)}
+  \end{equation*}
+\end{theorem}
+
+\begin{theorem}{4.6.7}[]
+  Let $X_1, ..., X_n$ be mutually independent random variables with mgfs
+  $M_{X_1}(t), ..., M_{X_n}(t)$. Let $Z = X_1 + ... + X_n$.
+  Then the mgf of $Z$ is
+  \begin{equation*}
+    M_Z(t) = M_{X_1}(t) \cdot ... \cdot M_{X_n}(t).
+  \end{equation*}
+  In particular, if $X_1, ..., X_n$ all have the same distribution with mgf
+  $M_X(t)$, then
+  \begin{equation*}
+    M_Z(t) = \del{M_X(t)}^n.
+  \end{equation*}
+\end{theorem}
+
+\begin{corollary}{4.6.9}[]
+  Let $X_1, ..., X_n$ be mutually independent random variables with mgfs
+  $M_{X_1}(t), ..., M_{X_n}(t)$. Let $a_1, ..., a_n$ and $b_1, ..., b_n$
+  bef fixed constants. Let $Z = (a_1 X_1 + b_1) + ... + (a_n X_n + b_n)$.
+  Then the mgf of $Z$ is
+  \begin{equation*}
+    M_Z(t) = \del{e^{t\del{\sum b_i}}} M_{X_1}(a_1 t) \cdot ... \cdot M_{X_n}(a_n t)
+  \end{equation*}
+\end{corollary}
+
+\begin{corollary}{4.6.10}[]
+  Let $X_1, ..., X_n$ be mutually independent random variables with
+  $X_i \sim \mathcal{N}(\mu_i, \sigma_i^{2})$. Let $a_1, ..., a_n$
+  and $b_1, ..., b_n$ be fixed constants. Then
+  \begin{equation*}
+    Z = \sum_{i = 1}^{n} \del{a_i X_i + b_i}
+    \sim
+    \mathcal{N}\del{
+      \sum_{i = 1}^{n} (a_i \mu_i + b_i), \sum_{i = 1}^{n} a_i^{2} \sigma_i^{2}
+    }
+  \end{equation*}
+\end{corollary}
+
+\begin{theorem}{4.6.11}[]
+  Let $\vec{X}_1, ..., \vec{X}_n$ be random vectors.
+  Then $\vec{X}_1, ..., \vec{X}_n$ are mutually independent vectors if and only if
+  there exist functions $g_i(\vec{x}_i), i = 1, ..., n$, such that the joint pdf or pmf of
+  $(\vec{X}_1, ..., \vec{X}_n)$ can be written as
+  \begin{equation*}
+    f(\vec{x}_1, ..., \vec{x}_n) = g_1(\vec{x}_1) \cdot ... \cdot g_n(\vec{x}_n).
+  \end{equation*}
+\end{theorem}
+
+\begin{theorem}{4.6.12}[]
+  Let $\vec{X}_1, ..., \vec{X}_n$ be independent random vectors. Let $g_i(\vec{x}_i)$
+  be a function only of $\vec{x}_i, i = 1, ..., n$. Then the random variables
+  $U_i = g_i(\vec{X}_i), i = 1, ..., n$, are mutually independent.
+\end{theorem}
+
+\begin{theorem}{4.6.13}[]
+  Let $(X_1, ..., X_n)$ be a random vector with pdf $f(x_1, ..., x_n)$.
+  Consider a new random vector $(U_1, ..., U_n)$, defined by
+  $U_j = g_j(X_1, ..., X_n), j = 1, ..., n$.
+  Denote the $i$th inverse by $x_1 = h_{1i}(u_1, ..., u_n)$.
+  Then
+  \begin{align*}
+    & f_{\vec{U}}(u_1, ..., u_n)
+    \\
+    & ~~~~ = \sum_{i = 1}^{k} f_{\vec{X}}(h_{1i}(u_1, ..., u_n), ..., h_{ni}(u_1, ..., u_n)) |J_i|,
+  \end{align*}
+  where
+  \begin{equation*}
+    \del{J_i}_{jk} = \pd{x_i}{u_k} = \pd{h_{ji}}{u_k}.
+  \end{equation*}
+\end{theorem}
+
+\begin{theorem}{4.7.3}[Cauchy-Schwarz Inequality]
+  For any two random variables $X$ and $Y$,
+  \begin{equation*}
+    |\E{XY}| \leq \E{|XY|} \leq \sqrt{\E{|X|^2}} \sqrt{\E{|Y|^2}}
+  \end{equation*}
+\end{theorem}
+
+\begin{theorem}{4.7.7}[Jensen's Inequality]
+  For any random variable $X$, if $g(x)$ is a convex function, then
+  \begin{equation*}
+    \E{g(X)} \geq g\del{\E{X}}
+  \end{equation*}
+  Equality holds if and only if, for every line $a + bx$ that is tangent to $g(x)$ at $x = \E{X}$, $P(g(X) = a + bX) = 1$.
 \end{theorem}
 
 \newpage
