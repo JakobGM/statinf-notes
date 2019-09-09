@@ -27,7 +27,7 @@
 
     % Aliases
     \renewcommand{\vec}[1]{\boldsymbol{#1}}
-    \newcommand{\E}[1]{\mathrm{\mathb{E} \left[#1 \right]}}
+    \newcommand{\E}[1]{\mathrm{\mathbb{E} \left[#1 \right]}}
     \newcommand{\Var}[1]{\mathrm{Var \left(#1 \right)}}
 
 \begin{document}
@@ -39,6 +39,25 @@
 \section{Probability Theory}
 
 \section{Transformations and Expectations}
+
+\begin{theorem}{2.1.5}[] 
+  Let $X$ have pdf $f_X(x)$ and let $Y = g(X)$, where $g$ is a monotone function.
+  Let $\mathcal{X}$ and $\mathcal{Y}$ be defined by
+  \begin{align*}
+    \mathcal{X} &= \{x: f_X(x) > 0\}
+    \\
+    \mathcal{Y} &= \{ y: y = g(x) \text{ for some } x \in \mathcal{X} \}
+  \end{align*}
+  Suppose that $f_X(x)$ is continous on $\mathcal{X}$ and that $g^{-1}(x)$
+  has a continous derivative and $\mathcal{Y}$. Then the pdf $Y$ is given by
+  \[
+    f_Y(y) = \begin{cases}
+      f_X(g^{-1}(y)) \left| \od{}{y} g^{-1}(y) \right|, &y \in \mathcal{Y}
+      \\
+      0, &\text{otherwise}.
+    \end{cases}
+  \]
+\end{theorem}
 
 \begin{theorem}{2.3.15}[Moment generating functions for linear transformations]
   For any constants $a$ and $b$, the mgf of the random variable $aX + b$ is given by
@@ -101,9 +120,10 @@
     \Var{
       \sum_{i = 1}^k \pd{w_i(\vec{\theta})}{\theta_j} t_i(X)
     }
-    &=
-    -\pd[2]{}{\theta_j} \log c(\vec{\theta})
-    -\E{\sum_{i = 1}^k \pd[2]{w_i(\vec{\theta})}{\theta_j} t_i(X)}
+    =
+    &-\pd[2]{}{\theta_j} \log c(\vec{\theta})
+    \\
+    &-\E{\sum_{i = 1}^k \pd[2]{w_i(\vec{\theta})}{\theta_j} t_i(X)}
   \end{align}
 \end{theorem}
 
@@ -196,10 +216,22 @@
 \begin{align}
   \Gamma(\alpha + 1) &= \alpha \Gamma(\alpha) &\alpha > 0
   \\
-  \Gamma(n) &= (n - 1)! &\n \text{positive integer}
+  \Gamma(n) &= (n - 1)! & n \text{ positive integer}
   \\
   \Gamma \left( \frac{1}{2} \right) &= \sqrt{\pi}
 \end{align}
 
-\end{multicol}
+\subsubsection*{Distribution of the variance estimator}
+Let $Z_1, Z_2, ..., Z_n$ be $\mathcal{N}(\mu, \sigma^{2}$
+and let
+\[
+  S^2 = \frac{1}{n-1} \sum_{i = 1}^{n} (Z_i - \bar{Z})^{2},
+\]
+be the variance estimator.
+Then
+\[
+  \frac{(n-1)S^2}{\sigma^{2}} \sim \chi^2_{n-1}.
+\]
+
+\end{multicols}
 \end{document}
