@@ -547,6 +547,107 @@
   Equality holds if and only if, for every line $a + bx$ that is tangent to $g(x)$ at $x = \E{X}$, $P(g(X) = a + bX) = 1$.
 \end{theorem}
 
+\section{Properties of a Random Sample}
+
+\begin{definition}{5.1.1}[Random sample]
+  The random variables $X_1, ..., X_n$ are called a \textit{random sample of size $n$ from the population $f(x)$} 
+  if $X_1, ..., X_n$ are mutually independent random variables and the marginal pdf or pmf of each $X_i$ is the same function $f(x)$.
+  Alternatively, $X_1, ..., X_n$ are called \textit{independent and identically distributed random variables with pdf or pmf $f(x)$.} 
+  This is commonly abbreviated to iid random variables.
+\end{definition}
+
+\begin{definition}{5.2.1}[Statistics]
+  Let $X_1, ..., X_n$ be a random sample of size $n$ from a population and let $T(x_1, ..., x_n)$ be a real-valued or vector-valued
+  function whose domain includes the sample space of $(X_1, ..., X_n)$. Then the random variable or random vector
+  $Y = T(X_1, ..., X_n)$ is called a \textit{statistic}. The probability distribution of a statistic $Y$ is called the
+  \textit{sampling distribution of Y}.
+\end{definition}
+
+\begin{definition}{5.2.2}[Sample mean]
+  The \textit{sample mean} is the arithmetic average of the values in a random sample. It is usually denoted by
+  \begin{equation*}
+    \bar{X} = \frac{X_1 + ... + X_n}{n} = \frac{1}{n} \sum_{i = 1}^{n} X_i. 
+  \end{equation*}
+\end{definition}
+
+\begin{definition}{5.2.3}[Sample variance]
+  The \textit{sample variance} is the statistic defined by
+  \begin{equation*}
+    S^2 = \frac{1}{n - 1} \sum_{i = 1}^{n} (X_i - \bar{X})^2.
+  \end{equation*}
+  The \textit{sample standard deviation} is the statistic defined by $S = \sqrt{S^2}$.
+\end{definition}
+
+\begin{theorem}{5.2.4}[Statistical properties]
+  Let $x_1, ..., x_n$ be any numbers and $\bar{x} = (x_1 + ... + x_n)/n$.
+  Then
+  \begin{enumerate}[label=\alph*.]
+    \item $\min_a \sum_{i = 1}^{n} (x_i - a)^2 = \sum_{i = 1}^{n} (x_i - \bar{x})^2$,
+    \item $(n - 1)s^2 = \sum_{i = 1}^{n} (x_i - \bar{x})^2 = \sum_{i = 1}^{n} x_i^2 - n \bar{x}^2$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{lemma}{5.2.5}
+  Let $X_1, ..., X_n$ be a random sample from a population and let $g(x)$ be a function such that
+  $\E{g(X_1)}$ and $\Var{g(X_1)}$ exist. Then
+  \begin{equation*}
+    \E{\sum \limits_{i=1}^{n} g(X_i)} = n\left( \E{g(X_1)} \right)
+  \end{equation*}
+  and
+  \begin{equation*}
+    \Var{\sum \limits_{i=1}^{n} g(X_i)} = n\left( \Var{g(X_1)} \right)
+  \end{equation*}
+\end{lemma}
+
+\begin{theorem}{5.2.6}
+  Let $X_1, ..., X_n$ be a random sample from a population with mean $\mu$ and variance
+  $\sigma^2 < \infty$. Then
+  \begin{enumerate}[label=\alph*.]
+    \item $\E{\bar{X}} = \mu$,
+    \item $\Var{\bar{X}} = \frac{\sigma^{2}}{n}$,
+    \item $\E{S^2} = \sigma^{2}$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}{5.2.7}[MGF of sample mean]
+  Let $X_1, ..., X_n$ be a random sample from a population with mgf $M_X(t)$.
+  Then the mgf of the sample mean is
+  \begin{equation*}
+    M_{\bar{X}}(t) = \left[ M_X(t/n) \right]^n
+  \end{equation*}
+\end{theorem}
+
+\begin{theorem}{5.2.9}
+  If $X$ and $Y$ are independent continuous random variables with pdfs $f_X(x)$ and $f_Y(y)$,
+  then the pdf of $Z = X + Y$ is
+  \begin{equation*}
+    f_Z(z) = \int_{-\infty}^\infty f_X(w) f_Y(z-w) \dif{w}.
+  \end{equation*}
+\end{theorem}
+
+\begin{theorem}
+  Suppose $X_1, ..., X_n$ is a random sample from a pdf or pmf $f(x | \theta)$, where
+  \begin{equation*}
+    f(x | \theta) = h(x) c(\theta) \exp{\left( \sum_{i = 1}^{k} w_i(\theta) t_i(x) \right)}
+  \end{equation*}
+  is a member of the exponential family. Define statistics $T_1, ..., T_k$ by
+  \begin{equation*}
+    T_i(X_1, ..., X_n) = \sum_{j = 1}^{n} t_i(X_j), ~~~~~ i = 1,...,k.
+  \end{equation*}
+  If the set $\{(w_1(\theta), ..., w_k(\theta)), \theta \in \Theta \}$ contains an open subset
+  of $\mathcal{R}^k$, then the distribution of $(T_1, ..., T_k)$ is an exponential family
+  of the form
+  \begin{align*}
+    f_T(u_1, ..., u_k | \theta)
+    &=
+    \\
+    H(u_1, ..., u_k)
+    \left[c(\theta)\right]^n &
+      \exp{\left( \sum_{i = 1}^{k} w_i(\theta) u_i(x) \right)}
+  \end{align*}
+\end{theorem}
+
+
 \newpage
 \appendix
 
