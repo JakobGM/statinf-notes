@@ -75,8 +75,8 @@
     \\
     \mathcal{Y} &= \{ y: y = g(x) \text{ for some } x \in \mathcal{X} \}
   \end{align*}
-  Suppose that $f_X(x)$ is continous on $\mathcal{X}$ and that $g^{-1}(x)$
-  has a continous derivative and $\mathcal{Y}$. Then the pdf $Y$ is given by
+  Suppose that $f_X(x)$ is continuous on $\mathcal{X}$ and that $g^{-1}(x)$
+  has a continuous derivative and $\mathcal{Y}$. Then the pdf $Y$ is given by
   \[
     f_Y(y) = \begin{cases}
       f_X(g^{-1}(y)) \left| \od{}{y} g^{-1}(y) \right|, &y \in \mathcal{Y}
@@ -276,7 +276,7 @@
 \end{definition}
 
 \begin{definition}{4.2.1}[Conditional PDF]
-  Let $(X,Y)$ be a continous bivariate random vector with joint pdf $f(x,y)$ and marginal pdfs
+  Let $(X,Y)$ be a continuous bivariate random vector with joint pdf $f(x,y)$ and marginal pdfs
   $f_{X}(x)$ and $f_{Y}(y)$. For any $x$ such that $f_{X}(x) > 0$,
   the \textit{conditional pdf of $Y$ given that $X = x$} is the function of $y$
   denoted by $f(y | x)$ and defined by
@@ -730,6 +730,156 @@
   \end{enumerate}
 \end{theorem}
 
+\begin{definition}{5.5.1}[Convergence in probability]
+  A sequence of random variables, $X_1, X_2, ...$, \textit{converges in probability}
+  to a random variable $X$, if for every $\epsilon > 0$,
+  \begin{equation*}
+    \lim_{n \rightarrow \infty} P(|X_n - X| \geq \epsilon) = 0
+  \end{equation*}
+  or, equivalently,
+  \begin{equation*}
+    \lim_{n \rightarrow \infty} P(|X_n - X| < \epsilon) = 1.
+  \end{equation*}
+\end{definition}
+
+
+\begin{theorem}{5.5.2}[Weak Law of Large Numbers]
+  Let $X_1, X_2, ...$ be iid random variables with $\E{X_i} = \mu$ and $\Var{X_i} = \sigma^2 < \infty$.
+  Define $\bar{X}_n = (1 / n) \sum_{i=1}^n X_i$. Then for every $\epsilon > 0$,
+  \begin{equation*}
+    \lim_{n \rightarrow \infty} P(|\bar{X}_n - \mu| < \epsilon) = 1;
+  \end{equation*}
+  that is, $\bar{X}_n$ converges in probability to $\mu$.
+  This is known as \textit{consistency}.
+\end{theorem}
+
+\begin{theorem}{5.5.4}
+  \label{theorem:5.5.4}
+  Suppose that $X_1, X_2, ...$ converges in probability to a random variable $X$
+  and that $h$ is a continuous function. Then $h(X_1), h(X_2), ...$ converges
+  in probability to $h(X)$.
+
+  If $S_n^2$ is a consistent estimator of $\sigma^2$, then by theorem \ref{theorem:5.5.4},
+  the sample standard deviation $S_n = \sqrt{S_n^2} = h(S_n^2)$ is a consistent estimator
+  for $\sigma$. Note that $S_n$ is, in fact, a biased estimator of $\sigma$,
+  but the bias disappears asymptotically.
+\end{theorem}
+
+\begin{definition}{5.5.10}[Convergence in distribution]
+  A sequence of random variables, $X_1, X_2, ...$, \textit{converges in distribution} 
+  to a random variable $X$ if
+  \begin{equation*}
+    \lim_{n \rightarrow \infty} F_{X_n}(x) = F_X(x)
+  \end{equation*}
+  at all points $x$ where $F_X(x)$ is continuous.
+\end{definition}
+
+\begin{theorem}{5.5.12}
+  If the sequence of random variables, $X_1, X_2, ...$, converges in probability
+  to a random variable $X$, the sequence also converges in distribution to $X$.
+\end{theorem}
+
+\begin{theorem}{5.5.13}
+  The sequence of random variables, $X_1, X_2, ...$, converges in probability to a
+  constant $\mu$ if and only if the sequence also converges in distribution to $\mu$.
+  That is, the statement
+  \begin{equation*}
+    \lim_{n \rightarrow \infty} P(|X_n - \mu| > \epsilon) \rightarrow 0
+    \text{ for every } \epsilon > 0
+  \end{equation*}
+  is equivalent to
+  \begin{equation*}
+    P(X_n \leq x) \rightarrow \begin{cases}
+      0 \text{ if } x < \mu \\
+      1 \text{ if } x > \mu.
+    \end{cases}
+  \end{equation*}
+\end{theorem}
+
+\begin{theorem}{5.5.14}[Central Limit Theorem]
+  $~$\\ Let $X_1, X_2, ...$ be a sequence of iid random variables whose mgfs exist in a neighborhood of $0$
+  (that is, $M_{X_i}(t)$ exists for $|t| < h$, for some positive $h$).
+  Let $\E{X_i} = \mu$ and $\Var{X_i} = \sigma^2 > 0$.
+  (Both $\mu$ and $\sigma^2$ are finite since the mgf exists.)
+  Define $\bar{X}_n = (1/n) \sum_{i=1}^n X_i$. Let $G_n(x)$ denote the cdf of $\sqrt{n} (\bar{X}_n - \mu)/\sigma$.
+  Then, for any $x$, $-\infty < x < \infty$,
+  \begin{equation*}
+    \lim_{n \rightarrow \infty} G_n(x) = \int_{-\infty}^x \frac{1}{\sqrt{2\pi}} e^{-y^2 / 2} \dif y
+  \end{equation*}
+  that is, $\sqrt{n} (\bar{X}_n - \mu) / \sigma$ has a limiting standard normal distribution.
+\end{theorem}
+
+\begin{theorem}{5.5.15}[Stronger form of the Central Limit Theorem]
+  Let $X_1, X_2, ...$ be a sequence of iid random variables with $\E{X_i} = \mu$ and
+  $0 < \Var{X_i} = \sigma^2 < \infty$.
+  Define $\bar{X}_n = (1/n) \sum_{i=1}^n X_i$. Let $G_n(x)$ denote the cdf of $\sqrt{n} (\bar{X}_n - \mu)/\sigma$.
+  Then, for any $x$, $-\infty < x < \infty$,
+  \begin{equation*}
+    \lim_{n \rightarrow \infty} G_n(x) = \int_{-\infty}^x \frac{1}{\sqrt{2\pi}} e^{-y^2 / 2} \dif y
+  \end{equation*}
+  that is, $\sqrt{n} (\bar{X}_n - \mu) / \sigma$ has a limiting standard normal distribution.
+\end{theorem}
+
+\begin{theorem}{5.5.17}[Slutsky's Theorem]
+  If $X_n \rightarrow X$ in distribution and $Y_n \rightarrow a$, a constant in probability, then
+  \begin{enumerate}[label=\alph*.]
+    \item $Y_nX_n \rightarrow aX$ in distribution.
+    \item $Y_n + X_n \rightarrow X + a$ in distribution.
+  \end{enumerate}
+\end{theorem}
+
+\begin{definition}{5.5.20}[Taylor polynomial]
+  If a function $g(x)$ has derivatives of order $r$, that is, $g^{(r)}(x) = \od[r]{}{x} g(x)$ exists,
+  then for any constant $a$, the \textit{Taylor polynomial of order $r$ about $a$ is} 
+  \begin{equation*}
+    T_r(x) = \sum_{i = 0}^{r} \frac{g^{(i)}(a)}{i!} (x - a)^i.
+  \end{equation*}
+\end{definition}
+
+\begin{theorem}{5.5.21}[Taylor]
+  If $g^{(r)}(a) = \eval{\od[r]{}{x} g(x)}_{x=a}$ \\ exists, then
+  \begin{equation*}
+    \lim_{x \rightarrow a} \frac{g(x) - T_r(x)}{(x - a)^r} = 0.
+  \end{equation*}
+\end{theorem}
+
+\begin{theorem}{5.5.24}[Delta Method]
+  Let $Y_n$ be a sequence of random variables that satisfies
+  $\sqrt{n}(Y_n - \theta) \rightarrow \mathcal{N}(0, \sigma^2)$ in distribution.
+  For a given function $g$ and a specific value of $\theta$, suppose that $g'(\theta)$ exists and is not $0$.
+  Then
+  \begin{equation*}
+    \sqrt{n} \left[ g(Y_n) - g(\theta) \right]
+    \rightarrow
+    \mathcal{N}\left(0, \sigma^2 \left[ g'(\theta) \right]^2 \right)
+  \end{equation*}
+  in distribution.
+\end{theorem}
+
+\begin{theorem}{5.5.26}[Second-order Delta Method]
+  Let $Y_n$ be a sequence of random variables that satisfies
+  $\sqrt{n}(Y_n - \theta) \rightarrow \mathcal{N}(0, \sigma^2)$ in distribution.
+  For a given function $g$ and a specific value of $\theta$, suppose that $g'(\theta) = 0$ and $g''(\theta)$ exists and is not $0$.
+  Then
+  \begin{equation*}
+    \sqrt{n} \left[ g(Y_n) - g(\theta) \right]
+    \rightarrow
+    \sigma^2 \frac{g''(\theta)}{2} \chi_1^2
+  \end{equation*}
+  in distribution.
+\end{theorem}
+
+\begin{theorem}{5.5.28}[Multivariate Delta Method]
+  Let $\vec{X}_1, ..., \vec{X}_n$ be a random sample with $\E{X_{ij}} = \mu_i$ and $\Cov{X_{ik}}{X_{jk}} = \sigma_{ij}$.
+  For ag vine function $g$ with continuous first partial derivatives and a specific value of $\vec{\mu} = (\mu_1, ..., \mu_p)$
+  for which $\tau = \sum \sum \sigma_{ij} \pd{g(\vec{\mu})}{\mu_i} \cdot \pd{g(\vec{\mu})}{\mu_j} > 0$,
+  \begin{equation*}
+    \sqrt{n} \left[ g\left( \bar{X}_1, ..., \bar{X}_s \right) - g(\mu_1, ..., \mu_p) \right] \rightarrow \mathcal{N}(0, \tau^2)
+  \end{equation*}
+  in distribution.
+\end{theorem}
+
+\newpage
 
 \newpage
 \appendix
