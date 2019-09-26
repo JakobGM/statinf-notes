@@ -46,6 +46,7 @@
     \renewcommand{\vec}[1]{\boldsymbol{#1}}
     \newcommand{\E}[1]{\mathrm{\mathbb{E} \left[#1 \right]}}
     \newcommand{\Var}[1]{\mathrm{Var \left(#1 \right)}}
+    \newcommand{\Cov}[2]{\mathrm{Cov}\left(#1, #2 \right)}
 
 \begin{document}
 
@@ -625,7 +626,7 @@
   \end{equation*}
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem}{5.2.11}
   Suppose $X_1, ..., X_n$ is a random sample from a pdf or pmf $f(x | \theta)$, where
   \begin{equation*}
     f(x | \theta) = h(x) c(\theta) \exp{\left( \sum_{i = 1}^{k} w_i(\theta) t_i(x) \right)}
@@ -645,6 +646,88 @@
     \left[c(\theta)\right]^n &
       \exp{\left( \sum_{i = 1}^{k} w_i(\theta) u_i(x) \right)}
   \end{align*}
+\end{theorem}
+
+\begin{theorem}{5.3.1}
+  Let $X_1, ..., X_n$ be a random sample from a $\mathcal{N}(\mu, \sigma^{2})$
+  distribution, and let $\bar{X} = (1 / n) \sum_{i=1}^n X_i$ and
+  $S^2 = [1 / (n - 1)] \sum_{i=1}^{n} (X_i - \bar{X})^{2}$.
+  Then
+  \begin{enumerate}[label=\alph*.]
+    \item $\bar{X}$ and $S^{2}$ are independent random variables,
+    \item $\bar{X}$ has a $\mathcal{N}(\mu, \sigma^{2}/n)$ distribution,
+    \item $(n-1) S^{2} / \sigma^{2}$ has a chi squared distribution with $n - 1$ degrees of freedom.
+  \end{enumerate}
+\end{theorem}
+
+\begin{lemma}{5.3.2}[Facts about chi squared random variables]
+  We use the notation $\chi_p^2$ to denote a chi squared random variable with p degrees of freedom.
+  \begin{enumerate}[label=\alph*.]
+    \item If $Z$ is a $\mathcal{N}(0, 1)$ random variable, then $Z^{2} \sim \chi_1^2$;
+      that is, the square of a standard normal random variable is a chi squared random variable.
+    \item If $X_1, ..., X_n$ are independent and $X_i \sim \chi_{p_i}^2$, then
+      $X_1 + ... + X_n \sim \chi_{p_1 + ... + p_n}^2$;
+      that is, independent chi squared variables add to a chi squared variable, and the degrees
+      also add.
+  \end{enumerate}
+\end{lemma}
+
+\begin{lemma}{5.3.3}
+  Let $X_j \sim \mathcal{N}(\mu_j, \sigma_j^2)$, $j = 1, ..., n$, independent.
+  For constants $a_{ij}$ and $b_{rj}$, $(j = 1, ..., n; i = 1, ..., k; r = 1, ..., m)$,
+  where $k + m \leq n$, define
+  \begin{align*}
+    U_i &= \sum_{j = 1}^{n} a_{ij} X_j, &i = 1, ..., k,
+    \\
+    V_r &= \sum_{j = 1}^{n} b_{rj} X_j, &r = 1, ..., m,
+  \end{align*}
+  \begin{enumerate}[label=\alph*.]
+    \item The random variables $U_i$ and $V_r$ are independent if and only if $\Cov{U_i}{V_r} = 0$.
+      Furthermore, $\Cov{U_i}{V_r} = \sum_{j=1}^n a_{ij}b_{rj} \sigma_j^2$.
+    \item The random vectors $(U_1, ..., U_k)$ and $(V_1, ..., V_m)$ are independent if only if
+      $U_i$ is independent of $V_r$ for all pairs $i, r$ $(i = 1, ..., k; r = 1, ..., m)$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{definition}{5.3.4}[Student's t distribution]
+  Let $X_1$, ..., $X_n$ be a random sample from a $\mathcal{N}(\mu, \sigma^2)$ distribution.
+  The quantity $(\bar{X} - \mu) / (S / \sqrt{n})$ has a \textit{Student's t distribution
+  with $n-1$ degrees of freedom}. Equivalently, a random variable $T$ has a Student's t
+  distribution with $p$ degrees of freedom, and we write $T \sim t_p$ if it has pdf
+  \begin{equation*}
+    f_T(t) = \frac{\Gamma(\frac{p + 1}{2})}{\Gamma(\frac{p}{2})}
+    \frac{1}{\sqrt{p\pi}} \frac{1}{(1 + t^2/p)^{(p+1)/2}}, ~~ -\infty < t < \infty
+  \end{equation*}
+\end{definition}
+
+\begin{definition}{5.3.6}[Snecedor's F distribution]
+  Let $X_1$, ..., $X_n$ be a random sample from a $\mathcal{N}(\mu_X, \sigma_X^2)$ population,
+  and let $Y_1, ..., Y_m$ be a random sample from an independent $\mathcal{N}(\mu_Y, \sigma_Y^2)$
+  population.
+  The random variable $F = (S_X^2 / \sigma_X^2) / (S_Y^2 / \sigma_Y^2)$ has a
+  \textit{Snedecor's F distribution with $n - 1$ and $m - 1$ degrees of freedom}.
+  Equivalently, a random variable $F$ has the $F$ distribution with $p$ and $q$
+  degrees of freedom if it has pdf
+  \begin{equation*}
+    \begin{gathered}
+      f_F(x) = \frac{\Gamma(\frac{p + q}{2})}{\Gamma(\frac{p}{2})\Gamma(\frac{q}{2})}
+        \left( \frac{p}{q} \right)^{p/2}
+        \frac{x^{(p/2) - 1}}{[1 + (p/q)x]^{(p+q)/2}},
+        \\
+        0 < x < \infty
+    \end{gathered}
+  \end{equation*}
+\end{definition}
+
+
+\begin{theorem}{5.3.8}
+  Properties of the $t$ and $F$ distributions:
+  \begin{enumerate}[label=\alph*.]
+    \item If $X \sim F_{p, q}$, then $1 / X \sim F_{q,p}$; that is, the reciprocal of an $F$
+      random variable is again an $F$ random variable.
+    \item If $X \sim t_q$, then $X^2 \sim F_{1,q}$.
+    \item If $X \sim F_{p,q}$, then $(p/q) X / (1 + (p/q)X) \sim \text{beta}(p/2, q/2)$.
+  \end{enumerate}
 \end{theorem}
 
 
