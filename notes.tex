@@ -929,7 +929,7 @@
   for any other sufficient statistic $T'(\vec{X})$, $T(\vec{x})$ is a function of $T'(\vec{x})$.
 \end{definition}
 
-\begin{theorem}{6.2.3}
+\begin{theorem}{6.2.13}
   Let $f(\vec{x} | \theta)$ be the pmf or pdf of a sample $\vec{X}$. Suppose there exists a
   function $T(\vec{x})$ such that, for every two sample points $\vec{x}$ and $\vec{y}$,
   the ratio $f(\vec{x} | \theta) / f(\vec{y} | \theta)$ is constant as a function of
@@ -962,7 +962,127 @@
   is complete as long as the parameter space $\Theta$ contains an open set in $\mathcal{R}^k$.
 \end{theorem}
 
+\section{Point Estimation}
 
+\begin{definition}{7.1.1}[Point estimator]
+  Aa \textit{point estimator} is any function $W(X_1, ..., X_n)$ of a sample;
+  that is, any statistic is a point estimator.
+\end{definition}
+
+\begin{definition}{7.2.0}[Method of moments]
+  The \textit{j}th sample moment, $m_j$, and \textit{j}th population moment are respectively
+  defined as.
+  \begin{align*}
+    m_j &= \frac{1}{n} \sum_{i = 1}^{n} X_i^j,
+    \\
+    \mu_j' &= \E{X^j}.
+  \end{align*}
+  The population moment $\mu_j'$ will typically be a function of $\theta_1, ..., \theta_k$,
+  say $\mu_j'(\theta_1, ..., \theta_k)$.
+  The method of moments involves solving the following system of equations for
+  $(\theta_1, ..., \theta_k)$.
+  \begin{equation*}
+    m_j = \mu_j'(\theta_1, ..., \theta_k),~~~~j = 1, ..., k
+  \end{equation*}
+\end{definition}
+
+\begin{definition}{7.2.4}[Maximum likelihood estimator]
+  For each sample point $\vec{x}$, let $\hat{\theta}(\vec{x})$ be a parameter value at which
+  $L(\theta|\vec{x})$ attains its maximum as a function of $\theta$, with $\vec{x}$ held fixed.
+  A \textit{maximum likelihood estimator} (MLE) of the parameter $\theta$ based on a sample
+  $\vec{X}$ is $\hat{\theta}(\vec{X})$.
+\end{definition}
+
+\begin{theorem}{7.2.10}[Invariance property of MLEs]
+  If $\hat{\theta}$ is the MLE of $\theta$, then for any function $\tau(\theta)$, the MLE
+  of $\tau(\theta)$ is $\tau(\hat{\theta})$.
+\end{theorem}
+
+\begin{definition}{7.2.5}[Conjugate family]
+  Let $\mathcal{F}$ denote the class of pdfs or pmfs $f(x | \theta)$ (indexed by $\theta$).
+  A class $\Pi$ of prior distributions is a \textit{conjugate family} for $\mathcal{F}$
+  if the posterior distribution is in the class $\Pi$ for all $f \in \mathcal{F}$,
+  all priors in $\Pi$, and all $x \in \mathcal{X}$.
+\end{definition}
+
+\begin{definition}{7.3.1}[Mean square error]
+  The \textit{mean squared error} (MSE) of an estimator $W$ of a parameter $\theta$
+  is the function of $\theta$ defined by $\mathbb{E}_{\theta}\left[ (W - \theta)^2 \right]$.
+\end{definition}
+
+\begin{definition}{7.3.2}[Bias]
+  The \textit{bias} of a point estimator $W$ of a parameter $\theta$ is the difference
+  between the expected value of $W$ and $\theta$; that is,
+  $\mathrm{Bias}_{\theta}(W) = \mathbb{E}_{\theta}\left[ W \right] - \theta$.
+  An estimator whose bias is identically (in $\theta$) equal to $0$ is called
+  \textit{unbiased} and satisfies $\mathbb{E}_{\theta} \left[ W \right] = \theta$
+  for all $\theta$.
+\end{definition}
+
+\begin{definition}{7.3.7}[Best unbiased estimator]
+  \label{theorem:7.3.7}
+  An estimator $W^*$ is a \textit{best unbiased estimator} of $\tau(\theta)$ if it satisfies
+  $\mathbb{E}_{\theta} \left[ W^* \right] = \tau(\theta)$ for all $\theta$ and, for any
+  other estimator $W$ with $\mathbb{E}_{\theta} \left[ W \right] = \tau(\theta)$,
+  we have $\mathrm{Var}_{\theta} \left(W^*\right) \leq \mathrm{Var}_{\theta} \left(W\right)$
+  for all $\theta$. $W^*$ is also called a \textit{uniform minimum variance unbiased estimator} 
+  (UMVUE) of $\tau(\theta)$.
+\end{definition}
+
+\begin{theorem}{7.3.9}[Cramér-Rao Inequality]
+  Let $X_1, ..., X_n$ be a sample with pdf $f(\vec{x} | \theta)$, and let
+  $W(\vec{X}) = W(X_1, ..., X_n)$ be any estimator satisfying
+  \begin{equation*}
+    \od{}{\theta} \mathbb{E}_{\theta} \left[ W(\vec{X}) \right]
+    =
+    \int_{\mathcal{X}} \pd{}{\theta} \left[ W(\vec{X}) f(\vec{x} | \theta) \right] \dif{\vec{x}}
+  \end{equation*}
+  and
+  \begin{equation*}
+    \mathrm{Var}_{\theta} \left( W(\vec{X}) \right) < \infty.
+  \end{equation*}
+  Then
+  \begin{equation*}
+    \mathrm{Var}_{\theta} \left( W(\vec{X}) \right)
+    \geq
+    \frac{
+      \left( \od{}{\theta} \mathbb{E}_{\theta} \left[ W(\vec{X}) \right] \right)^2
+    }{
+      \mathbb{E}_{\theta} \left[
+        \left( \pd{}{\theta} \log f(\vec{X} | \theta) \right)^2
+      \right]
+    }
+  \end{equation*}
+\end{theorem}
+
+\begin{corollary}{7.3.10}[Cramér-Rao Inequality, iid case]
+  If the assumptions of Theorem \ref{theorem:7.3.7} are satisfied and, additionally,
+  if $X_1, ..., X_n$ are iid with pdf $f(x|\theta)$, then
+  \begin{equation*}
+    \mathrm{Var}_{\theta} \left( W(\vec{X}) \right)
+    \geq
+    \frac{
+      \left( \od{}{\theta} \mathbb{E}_{\theta} \left[ W(\vec{X}) \right] \right)^2
+    }{
+      n \mathbb{E}_{\theta} \left[
+        \left( \pd{}{\theta} \log f(X | \theta) \right)^2
+      \right]
+    }
+  \end{equation*}
+\end{corollary}
+
+\begin{lemma}{7.3.11}
+  If $f(x | \theta)$ satisfies
+  \begin{equation*}
+    \od{}{\theta} \mathbb{E}_{\theta} \left( \pd{}{\theta} \log f(X | \theta) \right)
+    =
+    \int \pd{}{\theta} \left[
+      \left( \pd{}{\theta} \log(f(x | \theta)) \right) f(x | \theta)
+    \right] \dif{x}
+  \end{equation*}
+  TODO
+\end{lemma}
+  
 \newpage
 
 \newpage
