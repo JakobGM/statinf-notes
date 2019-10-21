@@ -1073,15 +1073,56 @@
 
 \begin{lemma}{7.3.11}
   If $f(x | \theta)$ satisfies
-  \begin{equation*}
+  \begin{gather*}
     \od{}{\theta} \mathbb{E}_{\theta} \left( \pd{}{\theta} \log f(X | \theta) \right)
+    \\
     =
     \int \pd{}{\theta} \left[
       \left( \pd{}{\theta} \log(f(x | \theta)) \right) f(x | \theta)
     \right] \dif{x}
+  \end{gather*}
+  (true fo an exponential family), then
+  \begin{equation*}
+    \mathbb{E}_{\theta} \left[ \left(
+        \pd{}{\theta} \log (f(X|\theta))
+    \right)^2 \right]
+    =
+    - \mathbb{E}_{\theta} \left[
+      \pd[2]{}{\theta} \log (f(X|\theta))
+    \right]
   \end{equation*}
-  TODO
 \end{lemma}
+
+\begin{corollary}{7.3.15}[Attainment]
+  Let $X_1, ..., X_n$ be iid $f(x|\theta)$, where $f(x|\theta)$ satisfies the conditions
+  of the Cramér-Rao Theroem. Let $L(\theta|\vec{x}) = \prod_{i=1}^{n} f(x_i | \theta)$
+  denote the likelihood function. If $W(\vec{X}) = W(X_1, ..., X_n)$ is any unbiased
+  estimator of $\tau(\theta)$, then $W(\vec{X})$ attains the Cramér-Rao Lower Bound
+  if and only if
+  \begin{equation*}
+    a(\theta) \left[ W(\vec{x}) - \tau(\theta) \right]
+    =
+    \pd{}{\theta} \log (L(\theta|\vec{x}))
+  \end{equation*}
+  for some function $a(\theta)$.
+\end{corollary}
+
+\begin{theorem}{7.3.17}[Rao-Blackwell]
+  Let $W$ be any unbiased estimator of $\tau(\theta)$, and let $T$ be a sufficient statistic
+  for $\theta$. Define $\phi(T) = \E{W | T}$. Then $\mathbb{E}_{\theta}[\phi(T)] = \tau(\theta)$
+  and $\mathrm{Var}_{\theta}(\phi(T)) \leq \mathrm{Var}_{\theta}(W)$ for all $\theta$;
+  that is, $\phi(T)$ is a uniformly better unbiased estimator of $\tau(\theta)$.
+\end{theorem}
+
+\begin{theorem}{7.3.23}
+  Let $T$ be a complete sufficient statistic for a parameter $\theta$, and let $\phi(T)$
+  be any estimator based only on $T$. Then $\phi(T)$ is the unique best unbiased estimator
+  of its expected value.
+\end{theorem}
+
+\begin{theorem}{7.5.1}[Lehmann-Scheffé]
+  Unbiased estimators based on complete sufficient statistics are unique.
+\end{theorem}
   
 \newpage
 
