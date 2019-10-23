@@ -1123,6 +1123,112 @@
 \begin{theorem}{7.5.1}[Lehmann-Scheffé]
   Unbiased estimators based on complete sufficient statistics are unique.
 \end{theorem}
+
+\section{Hypothesis Testing}
+
+\begin{definition}{8.1.1}[Hypothesis]
+  A \textit{hypothesis} is a statement about a population parameter.
+\end{definition}
+
+\begin{definition}{8.1.2}[Null hypothesis]
+  The complementary hypotheses in a hypothesis testing problem are called the
+  \textit{null hypothesis} and the \textit{alternative hypothesis}.
+  They are donetd by $H_0$ and $H_1$, respectively.
+\end{definition}
+
+\begin{definition}{8.1.3}[Hypothesis testing procedure]
+  A \textit{hypothesis testing procedure} or \textit{hypothesis test}
+  is a rule that specifies
+  \begin{enumerate}[label=\roman*.]
+    \item For which sample values the decision is made to accept $H_0$ as true.
+    \item For which sample values $H_0$ is rejected and $H_1$ is accepted as true.
+  \end{enumerate}
+  The subset of the sample space for which $H_0$ will be rejected is called the
+  \textit{rejection region} or \textit{critical region}. The complement of the
+  rejection region is called the \textit{acceptance region}.
+\end{definition}
+
+\begin{definition}{8.2.1}[Likelihood ratio test statistic]
+  The \textit{likelihood ratio test statistic} for testing $H_0: \theta \in \Theta_0$
+  versus $H_1: \theta \in \Theta_0^c$ is
+  \begin{equation*}
+    \lambda(\vec{x})
+    =
+    \frac{
+      \sup \limits_{\Theta_0} L(\theta | \vec{x})
+    }{
+      \sup \limits_{\Theta} L(\theta | \vec{x})
+    }
+  \end{equation*}
+  A \textit{likelihood ratio test} (LRT) is any test that has a rejection region
+  of the form $\{\vec{x}: \lambda(\vec{x}) \leq c \}$, where $c$ is any number
+  satisfying $0 \leq c \leq 1$.
+\end{definition}
+
+\begin{theorem}{8.2.4}
+  If $T(\vec{X})$ is a sufficient statistic for $\theta$ and $\lambda^*(t)$ and
+  $\lambda(\vec{x})$ are the LRT statistics based on $T$ and $\vec{X}$, respectively,
+  then $\lambda^*(T(\vec{x})) = \lambda(\vec{x})$ for every $\vec{x}$ in the sample space.
+\end{theorem}
+
+\begin{definition}{8.3.1}[Power function]
+  The \textit{power function} of a hypothesis test with rejection region $R$ is the function
+  of $\theta$ defined by $\beta(\theta) = P_{\theta}(\vec{X} \in R)$.
+\end{definition}
+
+\begin{definition}{8.3.5}[Size $\alpha$ test]
+  For $0 \leq \alpha \leq 1$, a test with power function $\beta(\theta)$ is a
+  \textit{size $\alpha$ test} if $\sup_{\theta \in \Theta_0} \beta(\theta) = \alpha$.
+\end{definition}
+
+\begin{definition}{8.3.6}[Level $\alpha$ test]
+  For $0 \leq \alpha \leq 1$, a test with power function $\beta(\theta)$ is a
+  \textit{level $\alpha$ test} if $\sup_{\theta \in \Theta_0} \beta(\theta) \leq \alpha$.
+\end{definition}
+
+\begin{definition}{8.3.11}[Uniformly most powerful class $\mathcal{C}$ test]
+  Let $\mathcal{C}$ be a class of tests for testing $H_0: \theta \in \Theta_0$
+  versus $H_1: \theta \in \Theta_0^c$. A test in class $\mathcal{C}$, with power function
+  $\beta(\theta)$, is a \textit{uniformly most powerful} (UMP) \textit{class $\mathcal{C}$ test} 
+  if $\beta(\theta) \geq \beta^{\prime}(\theta)$ for every $\theta \in \Theta_0^c$ and every
+  $\beta^{\prime}(\theta)$ that is a power function of a test in class $\mathcal{C}$.
+\end{definition}
+
+\begin{theorem}{8.3.12}[Neyman-Pearson Lemma]
+  \label{theorem:8.3.12}
+  Consider testing $H_0: \theta \in \theta_0$ versus $H_1: \theta \in \theta_1$, where the pdf or pmf
+  corresponding to $\theta_i$ is $f(\vec{x} | \theta_i), i = 0, 1$, using a test with rejection region
+  $R$ that satisfies
+  \begin{align*}
+    &\vec{x} \in R &\text{ if } f(\vec{x} | \theta_1) > k f(\vec{x} | \theta_0)
+    \\
+    &\vec{x} \in R^c &\text{ if } f(\vec{x} | \theta_1) < k f(\vec{x} | \theta_0)
+  \end{align*}
+  for some $k \geq 0$, and
+  \begin{equation*}
+    \alpha = P_{\theta_0}(\vec{X} \in R)
+  \end{equation*}
+  Then
+  \begin{enumerate}[label=\alph*.]
+    \item (Sufficiency) Any test that satisfies the two requirements above is a UMP level $\alpha$ test.
+  \end{enumerate}
+\end{theorem}
+
+\begin{corollary}{8.3.13}
+  Consider the hypothesis problem posed in Theorem \ref{theorem:8.3.12}. Suppose $T(\vec{X})$ is a sufficient
+  statistic for $\theta$ and $g(t | \theta_i)$ is the pdf or pmf of $T$ corresponding to $\theta_i, i = 0, 1$.
+  Then any test based on $T$ with rejection region $S$ (a subset of the sample space of $T$) is a UMP level
+  $\alpha$ test if it satisfies
+  \begin{align*}
+    &t \in S &\text{ if }~~ g(t | \theta_1) > k g(t|\theta_0)
+    \\
+    &t \in S^c &\text{ if }~~ g(t | \theta_1) < k g(t|\theta_0)
+  \end{align*}
+  for some $k \geq 0$, where
+  \begin{equation*}
+    \alpha = P_{\theta_0}(T \in S).
+  \end{equation*}
+\end{corollary}
   
 \newpage
 
