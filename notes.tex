@@ -1319,6 +1319,119 @@
   \end{enumerate}
   Then the random interval $[\theta_L(T),  \theta_U(T)]$ is a $1 - \alpha$ confidence interval for $\theta$.
 \end{theorem}
+
+\section{Asymptotic Evaluations}
+
+\begin{definition}{10.1.1}[Consistent sequence of estimators]
+  A sequence of estimators $W_n = W_n(X_1, ..., X_n)$ is a \textit{consistent sequence of estimators}
+  of the parameter $\theta$ if, for every $\epsilon > 0$ and every $\theta \in \Theta$,
+  \begin{equation*}
+    \lim \limits_{n \rightarrow \infty} P_{\theta}( |W_n - \theta| < \epsilon) = 1.
+  \end{equation*}
+\end{definition}
+
+\begin{theorem}{10.1.3}
+  If $W_n$ is a sequence of estimators of a parameter $\theta$ satisfying
+  \begin{enumerate}[label=\roman*.]
+    \item $\lim_{n \rightarrow \infty} \mathrm{Var}_{\theta} \left(W_n\right) = 0$,
+    \item $\lim_{n \rightarrow \infty} \mathrm{Bias}_{\theta} \left(W_n\right) = 0$,
+  \end{enumerate}
+  for every $\theta \in \Theta$, then $W_n$ is a consistent sequence of estimators of $\theta$.
+\end{theorem}
+
+\begin{theorem}{10.1.5}
+  Let $W_n$ be a consistent sequence of estimators of a parameter $\theta$.
+  Let $a_1, a_2, ...$ and $b_1, b_2, ...$ be sequences of constants satisfying
+  \begin{enumerate}[label=\roman*.]
+    \item $\lim_{n \rightarrow \infty} a_n = 1$,
+    \item $\lim_{n \rightarrow \infty} b_n = 0$.
+  \end{enumerate}
+  Then the sequence $U_n = a_n W_n + b_n$ is a consistent sequence of estimators of $\theta$.
+\end{theorem}
+
+\begin{theorem}{10.1.6}[Consistency of MLEs]
+  Let $X_1, X_2, ...,$ be iid $f(x|\theta)$, and let $L(\theta | \vec{x}) = \prod_{i=1}^{n} f(x_i | \theta)$
+  be the likelihood function. Let $\hat{\theta}$ denote thee MLE of $\theta$. Let $\tau(\theta)$ be a
+  continous function of $\theta$. Under teh regularity conditions of Miscellanea 10.6.2 on $f(x | \theta)$
+  and, hence, $L(\theta | \vec{x})$, for every $\epsilon > 0$ and every $\theta \in \Theta$,
+  \begin{equation*}
+    \lim \limits_{n \rightarrow \infty} P_{\theta}( |\tau(\hat{\theta}) - \tau(\theta)| \geq \epsilon) = 0.
+  \end{equation*}
+  That is, $\tau(\hat{\theta})$ is a consistent estimator of $\tau(\theta)$.
+\end{theorem}
+
+\begin{definition}{10.1.7}[Limiting variance]
+  For an estimator $T_n$, if $\lim_{n \rightarrow \infty} k_n \Var{T_n} = \tau^2 < \infty$, where
+  $\{k_n\}$ is a sequence of constants, then $\tau^2$ is called the \textit{limiting variance} or
+  \textit{limit of the variances}.
+\end{definition}
+
+\begin{definition}{10.1.9}[Asymptotic variance]
+  For an estimator $T_n$, suppose that $k_n(T_n - \tau(\theta)) \rightarrow \mathcal{N}(0, \sigma^2)$
+  in distribution. The parameter $\sigma^2$ is called the \textit{asymptotic variance} or
+  \textit{variance of the limit distribution} of $T_n$.
+\end{definition}
+
+\begin{definition}{10.1.11}[Asymptotically efficient]
+  A sequence of estimators $W_n$ is \textit{asymptotically efficient} for a parameter $\tau(\theta)$
+  if $\sqrt{n} [W_n - \tau(\theta)] \rightarrow  \mathcal{N}(0, v(\theta))$ in distribution and
+  \begin{equation*}
+    v(\theta) = \frac{
+      \left[ \tau^{\prime}(\theta) \right]^2
+    }{
+      \mathrm{E}_{\theta} \left[ \left( \pd{}{\theta} \log \left(f(X | \theta)\right) \right)^2 \right]
+    };
+  \end{equation*}
+  that is, the asymptotic variance of $W_n$ achieves the Cramér-Rao Lower Bound.
+\end{definition}
+
+\begin{theorem}{10.1.12}[Asymptotic efficiency of MLEs]
+  Let $X_1, X_2, ...,$ be iid $f(x|\theta)$, let $\hat{\theta}$ denote the MLE of $\theta$, and let
+  $\tau(\theta)$ be a continous function of $\theta$. Under the regularity conditions of Miscellanea
+  10.6.2 on $f(x|\theta)$ and, hence, $L(\theta|\vec{x})$,
+  \begin{equation*}
+    \sqrt{n} \left[ \tau(\hat{\theta}) - \tau(\theta) \right]
+    \rightarrow
+    \mathcal{N} \left( 0, v(\theta) \right)
+  \end{equation*}
+  where $v(\theta)$ is the Cramér-Rao Lower Bound. That is, $\tau(\hat{\theta})$ is a consistent
+  and asymptotically efficient estimator of $\tau(\theta)$.
+\end{theorem}
+
+\begin{definition}{10.1.16}[Asymptotic relative efficiency]
+  If two estimators $W_n$ and $V_n$ satisfy
+  \begin{gather*}
+    \sqrt{n} \left[ W_N - \tau(\theta) \right] \rightarrow \mathcal{N} \left( 0, \sigma_W^2 \right)
+    \\
+    \sqrt{n} \left[ V_N - \tau(\theta) \right] \rightarrow \mathcal{N} \left( 0, \sigma_V^2 \right)
+  \end{gather*}
+  in distribution, the \textit{asymptotic relative efficiency} (ARE) of $V_n$ with respect to
+  $W_n$ is
+  \begin{equation*}
+    \mathrm{ARE}(V_n, W_n) = \frac{\sigma_W^2}{\sigma_V^2}.
+  \end{equation*}
+\end{definition}
+
+\begin{theorem}{10.3.1}[Asymptotic distribution of the LRT --- Simple $H_0$]
+  For testing $H_0: \theta = \theta_0$ versus $H_1: \theta \neq \theta_0$, suppose $X_1, ..., X_n$
+  are iid $f(x | \theta)$, $\hat{\theta}$ is the MLE of $\theta$, and $f(x | \theta)$ satisfies
+  the regularity conditions of Miscellanea 10.6.2. Then under $H_0$, as $n \rightarrow \infty$,
+  \begin{equation*}
+    -2 \log \left( \lambda(\vec{X}) \right) \rightarrow \chi_1^2, \text{ in distribution,}
+  \end{equation*}
+  where $\chi_1^2$ is a $\chi^2$ random variable with 1 degree of freedom.
+\end{theorem}
+
+\begin{definition}{}[Score statistic]
+  The \textit{score statistic} is defined to be
+  \begin{equation*}
+    S(\theta)
+    =
+    \pd{}{\theta} \log \left( f(\vec{X} | \theta) \right)
+    =
+    \pd{}{\theta} \log \left( L(\theta | \vec{X}) \right)
+  \end{equation*}
+\end{definition}
   
 \newpage
 
