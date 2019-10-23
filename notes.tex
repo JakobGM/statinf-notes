@@ -1229,6 +1229,96 @@
     \alpha = P_{\theta_0}(T \in S).
   \end{equation*}
 \end{corollary}
+
+\section{Interval Estimation}
+
+\begin{definition}{9.1.1}[Interval estimate]
+  An \textit{interval estimate} of a real-valued parameter $\theta$ is any pair of functions,
+  $L(x_1, ..., x_n)$ and $U(x_1, ..., x_n)$, of a sample that satisfy $L(\vec{x}) \leq U(\vec{x})$
+  for all $\vec{x} \in \mathcal{X}$. If $\vec{X} = \vec{x}$ is observed, the inference
+  $L(\vec{x}) \leq \theta \leq U(\vec{x})$ is made. The random interval $[L(\vec{X}), U(\vec{X})]$
+  is called an \textit{interval estimator}.
+\end{definition}
+
+\begin{definition}{9.1.4}[Coverage probability]
+  For an interval estimator $[L(\vec{X}), U(\vec{X})]$ of a parameter $\theta$, the \textit{coverage probability} 
+  of $[L(\vec{X}), U(\vec{X})]$ is the probability that the random interval $[L(\vec{X}), U(\vec{X})]$ covers the true
+  parameter, $\theta$. In symbols, it is doneted by either $P_{\theta}(\theta \in [L(\vec{X}), U(\vec{X})])$
+  or  $P(\theta \in [L(\vec{X}), U(\vec{X})] | \theta)$.
+\end{definition}
+
+\begin{definition}{9.1.5}[Confidence coefficient]
+  For an interval estimator $[L(\vec{X}), U(\vec{X})]$ of a parameter $\theta$, the \textit{confidence coefficient}
+  of $[L(\vec{X}), U(\vec{X})]$ is the infimum of the coverage probabilities,
+  $\inf_{\theta} P_{\theta}(\theta \in [L(\vec{X}), U(\vec{X})])$.
+\end{definition}
+
+\begin{theorem}{9.2.2}
+  For each $\theta_0 \in \Theta$, let $A(\theta_0)$ be the acceptance region of a level $\alpha$ test of
+  $H_0: \theta = \theta_0$. For each $\vec{x} \in \mathcal{X}$, define a set $C(\vec{x})$ in the parameter space by
+  \begin{equation*}
+    C(\vec{x}) = \{ \theta_0: \vec{x} \in A(\theta_0) \}.
+  \end{equation*}
+  Then the random set $C(\vec{X})$ is a $1 - \alpha$ confidence set. Conversely, let $C(\vec{X})$ be a $1 - \alpha$
+  confidence set. For any $\theta_0 \in \Theta$, define
+  \begin{equation*}
+    A(\theta_0) = \{ \vec{x}: \theta_0 \in C(\vec{x}) \}.
+  \end{equation*}
+  Then $A(\theta_0)$ is the acceptance region of a level $\alpha$ test of $H_0: \theta = \theta_0$.
+\end{theorem}
+
+\begin{definition}{9.2.6}[Pivotal quantity]
+  A random variable $Q(\vec{X}, \theta) = Q(X_1, ..., X_n, \theta)$ is a \textit{pivotal quantity} (or \textit{pivot})
+  if the distribution of $Q(\vec{X}, \theta)$ is independent of all parameters.
+  That is, if $\vec{X} \sim  F(\vec{x} | \theta)$, then $Q(\vec{X} | \theta)$ has the same distribution for all values
+  of $\theta$.
+\end{definition}
+
+\begin{theorem}{9.2.12}[Pivoting a continous cdf]
+  Let $T$ be a statistic with continous cdf $F_T(t | \theta)$. Let $\alpha_1 + \alpha_2 = \alpha$ with $0 < \alpha < 1$
+  be fixed values. Suppose that for each $t \in \mathcal{T}$, the functions $\theta_L(t)$ and $\theta_U(t)$
+  can be defined as follows.
+  \begin{enumerate}[label=\roman*.]
+    \item If $F_T(t | \theta)$ is a decreasing function of $\theta$ for each $t$, define $\theta_L(t)$ and $\theta_U(t)$
+      by
+      \begin{equation*}
+        F_T\left(t | \theta_U(t)\right) = \alpha_1,
+        ~~~
+        F_T\left(t | \theta_L(t)\right) = 1 - \alpha_2.
+      \end{equation*}
+    \item If $F_T(t | \theta)$ is an increasing function of $\theta$ for each $t$, define $\theta_L(t)$ and $\theta_U(t)$
+      by
+      \begin{equation*}
+        F_T\left(t | \theta_U(t)\right) = 1 - \alpha_2,
+        ~~~
+        F_T\left(t | \theta_L(t)\right) = \alpha_1.
+      \end{equation*}
+  \end{enumerate}
+  Then the random interval $[\theta_L(T),  \theta_U(T)]$ is a $1 - \alpha$ confidence interval for $\theta$.
+\end{theorem}
+
+\begin{theorem}{9.2.14}[Pivoting a discrete cdf]
+  Let $T$ be a discrete statistic with cdf $F_T(t | \theta) = P(Tt \leq t | \theta)$. Let $\alpha_1 + \alpha_2 = \alpha$
+  with  $0 < \alpha < 1$ be fixed values. Suppose that for each $t \in \mathcal{T}$, $\theta_L(t)$ and $\theta_U(t)$
+  can be defined as follows.
+  \begin{enumerate}[label=\roman*.]
+    \item If $F_T(t | \theta)$ is a decreasing function of $\theta$ for each $t$, define $\theta_L(t)$ and $\theta_U(t)$
+      by
+      \begin{equation*}
+        P\left(T \leq t | \theta_U(t)\right) = \alpha_1,
+        ~~~
+        P\left(T \geq | \theta_L(t)\right) = \alpha_2.
+      \end{equation*}
+    \item If $F_T(t | \theta)$ is an increasing function of $\theta$ for each $t$, define $\theta_L(t)$ and $\theta_U(t)$
+      by
+      \begin{equation*}
+        P\left(T \geq t | \theta_U(t)\right) = \alpha_1,
+        ~~~
+        P\left(T \leq | \theta_L(t)\right) = \alpha_2.
+      \end{equation*}
+  \end{enumerate}
+  Then the random interval $[\theta_L(T),  \theta_U(T)]$ is a $1 - \alpha$ confidence interval for $\theta$.
+\end{theorem}
   
 \newpage
 
