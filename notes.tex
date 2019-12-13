@@ -120,7 +120,7 @@
   The natural parameter space for the family is then given as
   $$
     \mathcal{H} = \left\{
-      \eta = (\eta_1, ..., \eta_k):
+      \eta = (\eta_1, \ldots, \eta_k):
         \int_{-\infty}^{\infty} h(x) \exp \left(
           \sum_{i=1}^k \eta_i t_i(x)
         \right)
@@ -412,65 +412,65 @@
 \end{theorem}
 
 \begin{definition}{4.6.2}[Multinomial Distribution]
-  Let $n$ and $m$ be positive integers and let $p_1, ..., p_n$ be numbers satisfying
-  $0 \leq p_i \leq 1, i = 1, ..., n$ and $\sum_{i=1}^n p_i = 1$.
-  Then the random vector $(X_1, ..., X_n)$ has a
-  \textit{multinomial distribution with $m$ trials and cell probabilities $p_1, ..., p_n$}
-  if the joint pmf of $(X_1, ..., X_n)$ is
+  Let $n$ and $m$ be positive integers and let $p_1, \ldots, p_n$ be numbers satisfying
+  $0 \leq p_i \leq 1, i = 1, \ldots, n$ and $\sum_{i=1}^n p_i = 1$.
+  Then the random vector $(X_1, \ldots, X_n)$ has a
+  \textit{multinomial distribution with $m$ trials and cell probabilities $p_1, \ldots, p_n$}
+  if the joint pmf of $(X_1, \ldots, X_n)$ is
   \begin{equation*}
-    f(x_1, ..., x_n)
-    = \frac{m!}{x_1!...x_n!} p_1^{x_1} ... p_n^{x_n}
+    f(x_1, \ldots, x_n)
+    = \frac{m!}{x_1! \ldots x_n!} p_1^{x_1} \ldots p_n^{x_n}
     = m! \prod_{i=1}^n \frac{p_i^{x_i}}{x_i!}
   \end{equation*}
-  on the set of $(x_1, ..., x_n)$ such that each $x_i$ is a nonnegative integer
+  on the set of $(x_1, \ldots, x_n)$ such that each $x_i$ is a nonnegative integer
   and $\sum_{i = 1}^n x_i = m$.
 \end{definition}
 
 \begin{theorem}{4.6.2}[Multinomial Theorem]
   Let $m$ and $n$ be positive integers.
-  Let $\mathcal{A}$ be the set of vectors $\vec{x} = (x_1, ..., x_n)$
+  Let $\mathcal{A}$ be the set of vectors $\vec{x} = (x_1, \ldots, x_n)$
   such that each $x_i$ is a nonnegative integer
-  and $\sum \limits_{i=1}^{n} x_i = m$. Then, for any real numbers $p_1, ..., p_n$,
+  and $\sum \limits_{i=1}^{n} x_i = m$. Then, for any real numbers $p_1, \ldots, p_n$,
   \begin{equation*}
-    (p_1 + ... + p_n)^m
+    (p_1 + \ldots + p_n)^m
     =
-    \sum_{x \in \mathcal{A}} \frac{m!}{x_1! ... x_n!} p_1^{x_1} ... p_n^{x_n}.
+    \sum_{x \in \mathcal{A}} \frac{m!}{x_1! \ldots x_n!} p_1^{x_1} \ldots p_n^{x_n}.
   \end{equation*}
 \end{theorem}
 
 \begin{definition}{4.6.5}
-  Let $\vec{X}_1, ..., \vec{X}_n$ be random vectors with joint pdf or pmf
-  $f(\vec{x}_1, ..., \vec{x}_n)$. Let $f_{\vec{X}_i}(\vec{x}_i)$ denote the
-  marginal pdf or pmf of $\vec{X}_i$. Then $\vec{X_1}, ..., \vec{X_n}$
+  Let $\vec{X}_1, \ldots, \vec{X}_n$ be random vectors with joint pdf or pmf
+  $f(\vec{x}_1, \ldots, \vec{x}_n)$. Let $f_{\vec{X}_i}(\vec{x}_i)$ denote the
+  marginal pdf or pmf of $\vec{X}_i$. Then $\vec{X_1}, \ldots, \vec{X_n}$
   are called \textit{mutually independent random vectors} if, for every
-  $(\vec{x}_1, ..., \vec{x}_n)$,
+  $(\vec{x}_1, \ldots, \vec{x}_n)$,
   \begin{equation*}
-    f(\vec{x}_1, ..., \vec{x}_n) = \prod_{i = 1}^{n} f_{\vec{X}_i}(\vec{x}_i).
+    f(\vec{x}_1, \ldots, \vec{x}_n) = \prod_{i = 1}^{n} f_{\vec{X}_i}(\vec{x}_i).
   \end{equation*}
-  If the $X_i$s are alle one-dimensional, then $X_1, ..., X_n$ are called
+  If the $X_i$s are alle one-dimensional, then $X_1, \ldots, X_n$ are called
   \textit{mutually independent random variables}.
 \end{definition}
 
 \begin{theorem}{4.6.6}[]
-  Let $X_1, ..., X_n$ be mutually independent random variables.
-  Let $g_1, ..., g_n$ be real-valued functions such that $g_i(x_i)$ is a function
-  only of $x_i, i = 1, ..., n$.
+  Let $X_1, \ldots, X_n$ be mutually independent random variables.
+  Let $g_1, \ldots, g_n$ be real-valued functions such that $g_i(x_i)$ is a function
+  only of $x_i, i = 1, \ldots, n$.
   Then
   \begin{equation*}
-    \E{g_1(X_1) \cdot ... \cdot g_n(X_n)}
+    \E{g_1(X_1) \cdot \ldots \cdot g_n(X_n)}
     =
-  \E{g_1(X_1)} \cdot ... \cdot \E{g_n(X_n)}
+  \E{g_1(X_1)} \cdot \ldots \cdot \E{g_n(X_n)}
   \end{equation*}
 \end{theorem}
 
 \begin{theorem}{4.6.7}[]
-  Let $X_1, ..., X_n$ be mutually independent random variables with mgfs
-  $M_{X_1}(t), ..., M_{X_n}(t)$. Let $Z = X_1 + ... + X_n$.
+  Let $X_1, \ldots, X_n$ be mutually independent random variables with mgfs
+  $M_{X_1}(t), \ldots, M_{X_n}(t)$. Let $Z = X_1 + \ldots + X_n$.
   Then the mgf of $Z$ is
   \begin{equation*}
-    M_Z(t) = M_{X_1}(t) \cdot ... \cdot M_{X_n}(t).
+    M_Z(t) = M_{X_1}(t) \cdot \ldots \cdot M_{X_n}(t).
   \end{equation*}
-  In particular, if $X_1, ..., X_n$ all have the same distribution with mgf
+  In particular, if $X_1, \ldots, X_n$ all have the same distribution with mgf
   $M_X(t)$, then
   \begin{equation*}
     M_Z(t) = \del{M_X(t)}^n.
@@ -478,19 +478,19 @@
 \end{theorem}
 
 \begin{corollary}{4.6.9}[]
-  Let $X_1, ..., X_n$ be mutually independent random variables with mgfs
-  $M_{X_1}(t), ..., M_{X_n}(t)$. Let $a_1, ..., a_n$ and $b_1, ..., b_n$
-  bef fixed constants. Let $Z = (a_1 X_1 + b_1) + ... + (a_n X_n + b_n)$.
+  Let $X_1, \ldots, X_n$ be mutually independent random variables with mgfs
+  $M_{X_1}(t), \ldots, M_{X_n}(t)$. Let $a_1, \ldots, a_n$ and $b_1, \ldots, b_n$
+  bef fixed constants. Let $Z = (a_1 X_1 + b_1) + \ldots + (a_n X_n + b_n)$.
   Then the mgf of $Z$ is
   \begin{equation*}
-    M_Z(t) = \del{e^{t\del{\sum b_i}}} M_{X_1}(a_1 t) \cdot ... \cdot M_{X_n}(a_n t)
+    M_Z(t) = \del{e^{t\del{\sum b_i}}} M_{X_1}(a_1 t) \cdot \ldots \cdot M_{X_n}(a_n t)
   \end{equation*}
 \end{corollary}
 
 \begin{corollary}{4.6.10}[]
-  Let $X_1, ..., X_n$ be mutually independent random variables with
-  $X_i \sim \mathcal{N}(\mu_i, \sigma_i^{2})$. Let $a_1, ..., a_n$
-  and $b_1, ..., b_n$ be fixed constants. Then
+  Let $X_1, \ldots, X_n$ be mutually independent random variables with
+  $X_i \sim \mathcal{N}(\mu_i, \sigma_i^{2})$. Let $a_1, \ldots, a_n$
+  and $b_1, \ldots, b_n$ be fixed constants. Then
   \begin{equation*}
     Z = \sum_{i = 1}^{n} \del{a_i X_i + b_i}
     \sim
@@ -501,31 +501,31 @@
 \end{corollary}
 
 \begin{theorem}{4.6.11}[]
-  Let $\vec{X}_1, ..., \vec{X}_n$ be random vectors.
-  Then $\vec{X}_1, ..., \vec{X}_n$ are mutually independent vectors if and only if
-  there exist functions $g_i(\vec{x}_i), i = 1, ..., n$, such that the joint pdf or pmf of
-  $(\vec{X}_1, ..., \vec{X}_n)$ can be written as
+  Let $\vec{X}_1, \ldots, \vec{X}_n$ be random vectors.
+  Then $\vec{X}_1, \ldots, \vec{X}_n$ are mutually independent vectors if and only if
+  there exist functions $g_i(\vec{x}_i), i = 1, \ldots, n$, such that the joint pdf or pmf of
+  $(\vec{X}_1, \ldots, \vec{X}_n)$ can be written as
   \begin{equation*}
-    f(\vec{x}_1, ..., \vec{x}_n) = g_1(\vec{x}_1) \cdot ... \cdot g_n(\vec{x}_n).
+    f(\vec{x}_1, \ldots, \vec{x}_n) = g_1(\vec{x}_1) \cdot \ldots \cdot g_n(\vec{x}_n).
   \end{equation*}
 \end{theorem}
 
 \begin{theorem}{4.6.12}[]
-  Let $\vec{X}_1, ..., \vec{X}_n$ be independent random vectors. Let $g_i(\vec{x}_i)$
-  be a function only of $\vec{x}_i, i = 1, ..., n$. Then the random variables
-  $U_i = g_i(\vec{X}_i), i = 1, ..., n$, are mutually independent.
+  Let $\vec{X}_1, \ldots, \vec{X}_n$ be independent random vectors. Let $g_i(\vec{x}_i)$
+  be a function only of $\vec{x}_i, i = 1, \ldots, n$. Then the random variables
+  $U_i = g_i(\vec{X}_i), i = 1, \ldots, n$, are mutually independent.
 \end{theorem}
 
 \begin{theorem}{4.6.13}[]
-  Let $(X_1, ..., X_n)$ be a random vector with pdf $f(x_1, ..., x_n)$.
-  Consider a new random vector $(U_1, ..., U_n)$, defined by
-  $U_j = g_j(X_1, ..., X_n), j = 1, ..., n$.
-  Denote the $i$th inverse by $x_1 = h_{1i}(u_1, ..., u_n)$.
+  Let $(X_1, \ldots, X_n)$ be a random vector with pdf $f(x_1, \ldots, x_n)$.
+  Consider a new random vector $(U_1, \ldots, U_n)$, defined by
+  $U_j = g_j(X_1, \ldots, X_n), j = 1, \ldots, n$.
+  Denote the $i$th inverse by $x_1 = h_{1i}(u_1, \ldots, u_n)$.
   Then
   \begin{align*}
-    & f_{\vec{U}}(u_1, ..., u_n)
+    & f_{\vec{U}}(u_1, \ldots, u_n)
     \\
-    & ~~~~ = \sum_{i = 1}^{k} f_{\vec{X}}(h_{1i}(u_1, ..., u_n), ..., h_{ni}(u_1, ..., u_n)) |J_i|,
+    & ~~~~ = \sum_{i = 1}^{k} f_{\vec{X}}(h_{1i}(u_1, \ldots, u_n), \ldots, h_{ni}(u_1, \ldots, u_n)) |J_i|,
   \end{align*}
   where
   \begin{equation*}
@@ -551,23 +551,23 @@
 \section{Properties of a Random Sample}
 
 \begin{definition}{5.1.1}[Random sample]
-  The random variables $X_1, ..., X_n$ are called a \textit{random sample of size $n$ from the population $f(x)$} 
-  if $X_1, ..., X_n$ are mutually independent random variables and the marginal pdf or pmf of each $X_i$ is the same function $f(x)$.
-  Alternatively, $X_1, ..., X_n$ are called \textit{independent and identically distributed random variables with pdf or pmf $f(x)$.} 
+  The random variables $X_1, \ldots, X_n$ are called a \textit{random sample of size $n$ from the population $f(x)$} 
+  if $X_1, \ldots, X_n$ are mutually independent random variables and the marginal pdf or pmf of each $X_i$ is the same function $f(x)$.
+  Alternatively, $X_1, \ldots, X_n$ are called \textit{independent and identically distributed random variables with pdf or pmf $f(x)$.} 
   This is commonly abbreviated to iid random variables.
 \end{definition}
 
 \begin{definition}{5.2.1}[Statistics]
-  Let $X_1, ..., X_n$ be a random sample of size $n$ from a population and let $T(x_1, ..., x_n)$ be a real-valued or vector-valued
-  function whose domain includes the sample space of $(X_1, ..., X_n)$. Then the random variable or random vector
-  $Y = T(X_1, ..., X_n)$ is called a \textit{statistic}. The probability distribution of a statistic $Y$ is called the
+  Let $X_1, \ldots, X_n$ be a random sample of size $n$ from a population and let $T(x_1, \ldots, x_n)$ be a real-valued or vector-valued
+  function whose domain includes the sample space of $(X_1, \ldots, X_n)$. Then the random variable or random vector
+  $Y = T(X_1, \ldots, X_n)$ is called a \textit{statistic}. The probability distribution of a statistic $Y$ is called the
   \textit{sampling distribution of Y}.
 \end{definition}
 
 \begin{definition}{5.2.2}[Sample mean]
   The \textit{sample mean} is the arithmetic average of the values in a random sample. It is usually denoted by
   \begin{equation*}
-    \bar{X} = \frac{X_1 + ... + X_n}{n} = \frac{1}{n} \sum_{i = 1}^{n} X_i. 
+    \bar{X} = \frac{X_1 + \ldots + X_n}{n} = \frac{1}{n} \sum_{i = 1}^{n} X_i. 
   \end{equation*}
 \end{definition}
 
@@ -580,7 +580,7 @@
 \end{definition}
 
 \begin{theorem}{5.2.4}[Statistical properties]
-  Let $x_1, ..., x_n$ be any numbers and $\bar{x} = (x_1 + ... + x_n)/n$.
+  Let $x_1, \ldots, x_n$ be any numbers and $\bar{x} = (x_1 + \ldots + x_n)/n$.
   Then
   \begin{enumerate}[label=\alph*.]
     \item $\min_a \sum_{i = 1}^{n} (x_i - a)^2 = \sum_{i = 1}^{n} (x_i - \bar{x})^2$,
@@ -589,7 +589,7 @@
 \end{theorem}
 
 \begin{lemma}{5.2.5}
-  Let $X_1, ..., X_n$ be a random sample from a population and let $g(x)$ be a function such that
+  Let $X_1, \ldots, X_n$ be a random sample from a population and let $g(x)$ be a function such that
   $\E{g(X_1)}$ and $\Var{g(X_1)}$ exist. Then
   \begin{equation*}
     \E{\sum \limits_{i=1}^{n} g(X_i)} = n\left( \E{g(X_1)} \right)
@@ -601,7 +601,7 @@
 \end{lemma}
 
 \begin{theorem}{5.2.6}
-  Let $X_1, ..., X_n$ be a random sample from a population with mean $\mu$ and variance
+  Let $X_1, \ldots, X_n$ be a random sample from a population with mean $\mu$ and variance
   $\sigma^2 < \infty$. Then
   \begin{enumerate}[label=\alph*.]
     \item $\E{\bar{X}} = \mu$,
@@ -611,7 +611,7 @@
 \end{theorem}
 
 \begin{theorem}{5.2.7}[MGF of sample mean]
-  Let $X_1, ..., X_n$ be a random sample from a population with mgf $M_X(t)$.
+  Let $X_1, \ldots, X_n$ be a random sample from a population with mgf $M_X(t)$.
   Then the mgf of the sample mean is
   \begin{equation*}
     M_{\bar{X}}(t) = \left[ M_X(t/n) \right]^n
@@ -627,29 +627,29 @@
 \end{theorem}
 
 \begin{theorem}{5.2.11}
-  Suppose $X_1, ..., X_n$ is a random sample from a pdf or pmf $f(x | \theta)$, where
+  Suppose $X_1, \ldots, X_n$ is a random sample from a pdf or pmf $f(x | \theta)$, where
   \begin{equation*}
     f(x | \theta) = h(x) c(\theta) \exp{\left( \sum_{i = 1}^{k} w_i(\theta) t_i(x) \right)}
   \end{equation*}
-  is a member of the exponential family. Define statistics $T_1, ..., T_k$ by
+  is a member of the exponential family. Define statistics $T_1, \ldots, T_k$ by
   \begin{equation*}
-    T_i(X_1, ..., X_n) = \sum_{j = 1}^{n} t_i(X_j), ~~~~~ i = 1,...,k.
+    T_i(X_1, \ldots, X_n) = \sum_{j = 1}^{n} t_i(X_j), ~~~~~ i = 1,\ldots,k.
   \end{equation*}
-  If the set $\{(w_1(\theta), ..., w_k(\theta)), \theta \in \Theta \}$ contains an open subset
-  of $\mathcal{R}^k$, then the distribution of $(T_1, ..., T_k)$ is an exponential family
+  If the set $\{(w_1(\theta), \ldots, w_k(\theta)), \theta \in \Theta \}$ contains an open subset
+  of $\mathcal{R}^k$, then the distribution of $(T_1, \ldots, T_k)$ is an exponential family
   of the form
   \begin{align*}
-    f_T(u_1, ..., u_k | \theta)
+    f_T(u_1, \ldots, u_k | \theta)
     &=
     \\
-    H(u_1, ..., u_k)
+    H(u_1, \ldots, u_k)
     \left[c(\theta)\right]^n &
       \exp{\left( \sum_{i = 1}^{k} w_i(\theta) u_i(x) \right)}
   \end{align*}
 \end{theorem}
 
 \begin{theorem}{5.3.1}
-  Let $X_1, ..., X_n$ be a random sample from a $\mathcal{N}(\mu, \sigma^{2})$
+  Let $X_1, \ldots, X_n$ be a random sample from a $\mathcal{N}(\mu, \sigma^{2})$
   distribution, and let $\bar{X} = (1 / n) \sum_{i=1}^n X_i$ and
   $S^2 = [1 / (n - 1)] \sum_{i=1}^{n} (X_i - \bar{X})^{2}$.
   Then
@@ -665,32 +665,32 @@
   \begin{enumerate}[label=\alph*.]
     \item If $Z$ is a $\mathcal{N}(0, 1)$ random variable, then $Z^{2} \sim \chi_1^2$;
       that is, the square of a standard normal random variable is a chi squared random variable.
-    \item If $X_1, ..., X_n$ are independent and $X_i \sim \chi_{p_i}^2$, then
-      $X_1 + ... + X_n \sim \chi_{p_1 + ... + p_n}^2$;
+    \item If $X_1, \ldots, X_n$ are independent and $X_i \sim \chi_{p_i}^2$, then
+      $X_1 + \ldots + X_n \sim \chi_{p_1 + \ldots + p_n}^2$;
       that is, independent chi squared variables add to a chi squared variable, and the degrees
       also add.
   \end{enumerate}
 \end{lemma}
 
 \begin{lemma}{5.3.3}
-  Let $X_j \sim \mathcal{N}(\mu_j, \sigma_j^2)$, $j = 1, ..., n$, independent.
-  For constants $a_{ij}$ and $b_{rj}$, $(j = 1, ..., n; i = 1, ..., k; r = 1, ..., m)$,
+  Let $X_j \sim \mathcal{N}(\mu_j, \sigma_j^2)$, $j = 1, \ldots, n$, independent.
+  For constants $a_{ij}$ and $b_{rj}$, $(j = 1, \ldots, n; i = 1, \ldots, k; r = 1, \ldots, m)$,
   where $k + m \leq n$, define
   \begin{align*}
-    U_i &= \sum_{j = 1}^{n} a_{ij} X_j, &i = 1, ..., k,
+    U_i &= \sum_{j = 1}^{n} a_{ij} X_j, &i = 1, \ldots, k,
     \\
-    V_r &= \sum_{j = 1}^{n} b_{rj} X_j, &r = 1, ..., m,
+    V_r &= \sum_{j = 1}^{n} b_{rj} X_j, &r = 1, \ldots, m,
   \end{align*}
   \begin{enumerate}[label=\alph*.]
     \item The random variables $U_i$ and $V_r$ are independent if and only if $\Cov{U_i}{V_r} = 0$.
       Furthermore, $\Cov{U_i}{V_r} = \sum_{j=1}^n a_{ij}b_{rj} \sigma_j^2$.
-    \item The random vectors $(U_1, ..., U_k)$ and $(V_1, ..., V_m)$ are independent if only if
-      $U_i$ is independent of $V_r$ for all pairs $i, r$ $(i = 1, ..., k; r = 1, ..., m)$.
+    \item The random vectors $(U_1, \ldots, U_k)$ and $(V_1, \ldots, V_m)$ are independent if only if
+      $U_i$ is independent of $V_r$ for all pairs $i, r$ $(i = 1, \ldots, k; r = 1, \ldots, m)$.
   \end{enumerate}
 \end{lemma}
 
 \begin{definition}{5.3.4}[Student's t distribution]
-  Let $X_1$, ..., $X_n$ be a random sample from a $\mathcal{N}(\mu, \sigma^2)$ distribution.
+  Let $X_1$, \ldots, $X_n$ be a random sample from a $\mathcal{N}(\mu, \sigma^2)$ distribution.
   The quantity $(\bar{X} - \mu) / (S / \sqrt{n})$ has a \textit{Student's t distribution
   with $n-1$ degrees of freedom}. Equivalently, a random variable $T$ has a Student's t
   distribution with $p$ degrees of freedom, and we write $T \sim t_p$ if it has pdf
@@ -701,8 +701,8 @@
 \end{definition}
 
 \begin{definition}{5.3.6}[Snecedor's F distribution]
-  Let $X_1$, ..., $X_n$ be a random sample from a $\mathcal{N}(\mu_X, \sigma_X^2)$ population,
-  and let $Y_1, ..., Y_m$ be a random sample from an independent $\mathcal{N}(\mu_Y, \sigma_Y^2)$
+  Let $X_1$, \ldots, $X_n$ be a random sample from a $\mathcal{N}(\mu_X, \sigma_X^2)$ population,
+  and let $Y_1, \ldots, Y_m$ be a random sample from an independent $\mathcal{N}(\mu_Y, \sigma_Y^2)$
   population.
   The random variable $F = (S_X^2 / \sigma_X^2) / (S_Y^2 / \sigma_Y^2)$ has a
   \textit{Snedecor's F distribution with $n - 1$ and $m - 1$ degrees of freedom}.
@@ -731,7 +731,7 @@
 \end{theorem}
 
 \begin{definition}{5.5.1}[Convergence in probability]
-  A sequence of random variables, $X_1, X_2, ...$, \textit{converges in probability}
+  A sequence of random variables, $X_1, X_2, \ldots$, \textit{converges in probability}
   to a random variable $X$, if for every $\epsilon > 0$,
   \begin{equation*}
     \lim_{n \rightarrow \infty} P(|X_n - X| \geq \epsilon) = 0
@@ -744,7 +744,7 @@
 
 
 \begin{theorem}{5.5.2}[Weak Law of Large Numbers]
-  Let $X_1, X_2, ...$ be iid random variables with $\E{X_i} = \mu$ and $\Var{X_i} = \sigma^2 < \infty$.
+  Let $X_1, X_2, \ldots$ be iid random variables with $\E{X_i} = \mu$ and $\Var{X_i} = \sigma^2 < \infty$.
   Define $\bar{X}_n = (1 / n) \sum_{i=1}^n X_i$. Then for every $\epsilon > 0$,
   \begin{equation*}
     \lim_{n \rightarrow \infty} P(|\bar{X}_n - \mu| < \epsilon) = 1;
@@ -755,8 +755,8 @@
 
 \begin{theorem}{5.5.4}
   \label{theorem:5.5.4}
-  Suppose that $X_1, X_2, ...$ converges in probability to a random variable $X$
-  and that $h$ is a continuous function. Then $h(X_1), h(X_2), ...$ converges
+  Suppose that $X_1, X_2, \ldots$ converges in probability to a random variable $X$
+  and that $h$ is a continuous function. Then $h(X_1), h(X_2), \ldots$ converges
   in probability to $h(X)$.
 
   If $S_n^2$ is a consistent estimator of $\sigma^2$, then by theorem \ref{theorem:5.5.4},
@@ -766,7 +766,7 @@
 \end{theorem}
 
 \begin{definition}{5.5.10}[Convergence in distribution]
-  A sequence of random variables, $X_1, X_2, ...$, \textit{converges in distribution} 
+  A sequence of random variables, $X_1, X_2, \ldots$, \textit{converges in distribution} 
   to a random variable $X$ if
   \begin{equation*}
     \lim_{n \rightarrow \infty} F_{X_n}(x) = F_X(x)
@@ -775,12 +775,12 @@
 \end{definition}
 
 \begin{theorem}{5.5.12}
-  If the sequence of random variables, $X_1, X_2, ...$, converges in probability
+  If the sequence of random variables, $X_1, X_2, \ldots$, converges in probability
   to a random variable $X$, the sequence also converges in distribution to $X$.
 \end{theorem}
 
 \begin{theorem}{5.5.13}
-  The sequence of random variables, $X_1, X_2, ...$, converges in probability to a
+  The sequence of random variables, $X_1, X_2, \ldots$, converges in probability to a
   constant $\mu$ if and only if the sequence also converges in distribution to $\mu$.
   That is, the statement
   \begin{equation*}
@@ -797,7 +797,7 @@
 \end{theorem}
 
 \begin{theorem}{5.5.14}[Central Limit Theorem]
-  $~$\\ Let $X_1, X_2, ...$ be a sequence of iid random variables whose mgfs exist in a neighborhood of $0$
+  $~$\\ Let $X_1, X_2, \ldots$ be a sequence of iid random variables whose mgfs exist in a neighborhood of $0$
   (that is, $M_{X_i}(t)$ exists for $|t| < h$, for some positive $h$).
   Let $\E{X_i} = \mu$ and $\Var{X_i} = \sigma^2 > 0$.
   (Both $\mu$ and $\sigma^2$ are finite since the mgf exists.)
@@ -810,7 +810,7 @@
 \end{theorem}
 
 \begin{theorem}{5.5.15}[Stronger form of the Central Limit Theorem]
-  Let $X_1, X_2, ...$ be a sequence of iid random variables with $\E{X_i} = \mu$ and
+  Let $X_1, X_2, \ldots$ be a sequence of iid random variables with $\E{X_i} = \mu$ and
   $0 < \Var{X_i} = \sigma^2 < \infty$.
   Define $\bar{X}_n = (1/n) \sum_{i=1}^n X_i$. Let $G_n(x)$ denote the cdf of $\sqrt{n} (\bar{X}_n - \mu)/\sigma$.
   Then, for any $x$, $-\infty < x < \infty$,
@@ -870,11 +870,11 @@
 \end{theorem}
 
 \begin{theorem}{5.5.28}[Multivariate Delta Method]
-  Let $\vec{X}_1, ..., \vec{X}_n$ be a random sample with $\E{X_{ij}} = \mu_i$ and $\Cov{X_{ik}}{X_{jk}} = \sigma_{ij}$.
-  For a given function $g$ with continuous first partial derivatives and a specific value of $\vec{\mu} = (\mu_1, ..., \mu_p)$
+  Let $\vec{X}_1, \ldots, \vec{X}_n$ be a random sample with $\E{X_{ij}} = \mu_i$ and $\Cov{X_{ik}}{X_{jk}} = \sigma_{ij}$.
+  For a given function $g$ with continuous first partial derivatives and a specific value of $\vec{\mu} = (\mu_1, \ldots, \mu_p)$
   for which $\tau = \sum \sum \sigma_{ij} \pd{g(\vec{\mu})}{\mu_i} \cdot \pd{g(\vec{\mu})}{\mu_j} > 0$,
   \begin{equation*}
-    \sqrt{n} \left[ g\left( \bar{X}_1, ..., \bar{X}_s \right) - g(\mu_1, ..., \mu_p) \right] \rightarrow \mathcal{N}(0, \tau^2)
+    \sqrt{n} \left[ g\left( \bar{X}_1, \ldots, \bar{X}_s \right) - g(\mu_1, \ldots, \mu_p) \right] \rightarrow \mathcal{N}(0, \tau^2)
   \end{equation*}
   in distribution.
 \end{theorem}
@@ -910,15 +910,15 @@
 \end{theorem}
 
 \begin{theorem}{6.2.10}
-  Let $X_1, ..., X_n$ be iid observations from a pdf or pmf $f(x|\theta)$ that belongs to an exponential family
+  Let $X_1, \ldots, X_n$ be iid observations from a pdf or pmf $f(x|\theta)$ that belongs to an exponential family
   given by
   \begin{equation*}
     f(x|\vec{\theta}) = h(x)c(\vec{\theta}) \exp\left( \sum_{i = 1}^{k} w_i(\vec{\theta}) t_i(x) \right),
   \end{equation*}
-  where $\vec{\theta} = (\theta_1, \theta_2, ..., \theta_d), d \leq k$. Then
+  where $\vec{\theta} = (\theta_1, \theta_2, \ldots, \theta_d), d \leq k$. Then
   \begin{equation*}
     T(\vec{X}) = \left(
-      \sum_{j = 1}^{n} t_1(X_j), ..., \sum_{j = 1}^{n} t_k(X_j)
+      \sum_{j = 1}^{n} t_1(X_j), \ldots, \sum_{j = 1}^{n} t_k(X_j)
     \right)
   \end{equation*}
   is a sufficient statistic for $\vec{\theta}$.
@@ -946,17 +946,17 @@
 \end{definition}
 
 \begin{theorem}{6.2.25}[Complete Statistic in the Exponential Family]
-  Let $X_1, ..., X_n$ be iid observations from an exponential family with pdf or pmf of the
+  Let $X_1, \ldots, X_n$ be iid observations from an exponential family with pdf or pmf of the
   form
   \begin{equation*}
     f(x|\vec{\theta}) = h(x) c(\vec{\theta}) \exp \left(
       \sum_{j = 1}^{k} w(\theta_j) t_j(x)
     \right)
   \end{equation*}
-  where $\vec{\theta} = (\theta_1, \theta_2, ..., \theta_k)$. Then the statistic
+  where $\vec{\theta} = (\theta_1, \theta_2, \ldots, \theta_k)$. Then the statistic
   \begin{equation*}
     T(\vec{X}) = \left(
-      \sum_{i = 1}^{n} t_1(X_i), \sum_{i = 1}^{n} t_2(X_i), ..., \sum_{i = 1}^{n} t_k(X_i)
+      \sum_{i = 1}^{n} t_1(X_i), \sum_{i = 1}^{n} t_2(X_i), \ldots, \sum_{i = 1}^{n} t_k(X_i)
     \right)
   \end{equation*}
   is complete as long as the parameter space $\Theta$ contains an open set in $\mathcal{R}^k$.
@@ -965,7 +965,7 @@
 \section{Point Estimation}
 
 \begin{definition}{7.1.1}[Point estimator]
-  A \textit{point estimator} is any function $W(X_1, ..., X_n)$ of a sample;
+  A \textit{point estimator} is any function $W(X_1, \ldots, X_n)$ of a sample;
   that is, any statistic is a point estimator.
 \end{definition}
 
@@ -977,12 +977,12 @@
     \\
     \mu_j' &= \E{X^j}.
   \end{align*}
-  The population moment $\mu_j'$ will typically be a function of $\theta_1, ..., \theta_k$,
-  say $\mu_j'(\theta_1, ..., \theta_k)$.
+  The population moment $\mu_j'$ will typically be a function of $\theta_1, \ldots, \theta_k$,
+  say $\mu_j'(\theta_1, \ldots, \theta_k)$.
   The method of moments involves solving the following system of equations for
-  $(\theta_1, ..., \theta_k)$.
+  $(\theta_1, \ldots, \theta_k)$.
   \begin{equation*}
-    m_j = \mu_j'(\theta_1, ..., \theta_k),~~~~j = 1, ..., k
+    m_j = \mu_j'(\theta_1, \ldots, \theta_k),~~~~j = 1, \ldots, k
   \end{equation*}
 \end{definition}
 
@@ -1030,8 +1030,8 @@
 \end{definition}
 
 \begin{theorem}{7.3.9}[Cramér-Rao Inequality]
-  Let $X_1, ..., X_n$ be a sample with pdf $f(\vec{x} | \theta)$, and let
-  $W(\vec{X}) = W(X_1, ..., X_n)$ be any estimator satisfying
+  Let \\ $X_1, \ldots, X_n$ be a sample with pdf $f(\vec{x} | \theta)$, and let
+  $W(\vec{X}) = W(X_1, \ldots, X_n)$ be any estimator satisfying
   \begin{equation*}
     \od{}{\theta} \mathbb{E}_{\theta} \left[ W(\vec{X}) \right]
     =
@@ -1057,7 +1057,7 @@
 
 \begin{corollary}{7.3.10}[Cramér-Rao Inequality, iid case]
   If the assumptions of Theorem \ref{theorem:7.3.7} are satisfied and, additionally,
-  if $X_1, ..., X_n$ are iid with pdf $f(x|\theta)$, then
+  if $X_1, \ldots, X_n$ are iid with pdf $f(x|\theta)$, then
   \begin{equation*}
     \mathrm{Var}_{\theta} \left( W(\vec{X}) \right)
     \geq
@@ -1094,9 +1094,9 @@
 \end{lemma}
 
 \begin{corollary}{7.3.15}[Attainment]
-  Let $X_1, ..., X_n$ be iid $f(x|\theta)$, where $f(x|\theta)$ satisfies the conditions
+  Let $X_1, \ldots, X_n$ be iid $f(x|\theta)$, where $f(x|\theta)$ satisfies the conditions
   of the Cramér-Rao Theroem. Let $L(\theta|\vec{x}) = \prod_{i=1}^{n} f(x_i | \theta)$
-  denote the likelihood function. If $W(\vec{X}) = W(X_1, ..., X_n)$ is any unbiased
+  denote the likelihood function. If $W(\vec{X}) = W(X_1, \ldots, X_n)$ is any unbiased
   estimator of $\tau(\theta)$, then $W(\vec{X})$ attains the Cramér-Rao Lower Bound
   if and only if
   \begin{equation*}
@@ -1234,7 +1234,7 @@
 
 \begin{definition}{9.1.1}[Interval estimate]
   An \textit{interval estimate} of a real-valued parameter $\theta$ is any pair of functions,
-  $L(x_1, ..., x_n)$ and $U(x_1, ..., x_n)$, of a sample that satisfy $L(\vec{x}) \leq U(\vec{x})$
+  $L(x_1, \ldots, x_n)$ and $U(x_1, \ldots, x_n)$, of a sample that satisfy $L(\vec{x}) \leq U(\vec{x})$
   for all $\vec{x} \in \mathcal{X}$. If $\vec{X} = \vec{x}$ is observed, the inference
   $L(\vec{x}) \leq \theta \leq U(\vec{x})$ is made. The random interval $[L(\vec{X}), U(\vec{X})]$
   is called an \textit{interval estimator}.
@@ -1268,7 +1268,7 @@
 \end{theorem}
 
 \begin{definition}{9.2.6}[Pivotal quantity]
-  A random variable $Q(\vec{X}, \theta) = Q(X_1, ..., X_n, \theta)$ is a \textit{pivotal quantity} (or \textit{pivot})
+  A random variable $Q(\vec{X}, \theta) = Q(X_1, \ldots, X_n, \theta)$ is a \textit{pivotal quantity} (or \textit{pivot})
   if the distribution of $Q(\vec{X}, \theta)$ is independent of all parameters.
   That is, if $\vec{X} \sim  F(\vec{x} | \theta)$, then $Q(\vec{X} | \theta)$ has the same distribution for all values
   of $\theta$.
@@ -1323,7 +1323,7 @@
 \section{Asymptotic Evaluations}
 
 \begin{definition}{10.1.1}[Consistent sequence of estimators]
-  A sequence of estimators $W_n = W_n(X_1, ..., X_n)$ is a \textit{consistent sequence of estimators}
+  A sequence of estimators $W_n = W_n(X_1, \ldots, X_n)$ is a \textit{consistent sequence of estimators}
   of the parameter $\theta$ if, for every $\epsilon > 0$ and every $\theta \in \Theta$,
   \begin{equation*}
     \lim \limits_{n \rightarrow \infty} P_{\theta}( |W_n - \theta| < \epsilon) = 1.
@@ -1341,7 +1341,7 @@
 
 \begin{theorem}{10.1.5}
   Let $W_n$ be a consistent sequence of estimators of a parameter $\theta$.
-  Let $a_1, a_2, ...$ and $b_1, b_2, ...$ be sequences of constants satisfying
+  Let $a_1, a_2, \ldots$ and $b_1, b_2, \ldots$ be sequences of constants satisfying
   \begin{enumerate}[label=\roman*.]
     \item $\lim_{n \rightarrow \infty} a_n = 1$,
     \item $\lim_{n \rightarrow \infty} b_n = 0$.
@@ -1350,7 +1350,7 @@
 \end{theorem}
 
 \begin{theorem}{10.1.6}[Consistency of MLEs]
-  Let $X_1, X_2, ...,$ be iid $f(x|\theta)$, and let $L(\theta | \vec{x}) = \prod_{i=1}^{n} f(x_i | \theta)$
+  Let \\ $X_1, X_2, \ldots,$ be iid $f(x|\theta)$, and let $L(\theta | \vec{x}) = \prod_{i=1}^{n} f(x_i | \theta)$
   be the likelihood function. Let $\hat{\theta}$ denote thee MLE of $\theta$. Let $\tau(\theta)$ be a
   continous function of $\theta$. Under teh regularity conditions of Miscellanea 10.6.2 on $f(x | \theta)$
   and, hence, $L(\theta | \vec{x})$, for every $\epsilon > 0$ and every $\theta \in \Theta$,
@@ -1386,7 +1386,7 @@
 \end{definition}
 
 \begin{theorem}{10.1.12}[Asymptotic efficiency of MLEs]
-  Let $X_1, X_2, ...,$ be iid $f(x|\theta)$, let $\hat{\theta}$ denote the MLE of $\theta$, and let
+  Let $X_1, X_2, \ldots,$ be iid $f(x|\theta)$, let $\hat{\theta}$ denote the MLE of $\theta$, and let
   $\tau(\theta)$ be a continous function of $\theta$. Under the regularity conditions of Miscellanea
   10.6.2 on $f(x|\theta)$ and, hence, $L(\theta|\vec{x})$,
   \begin{equation*}
@@ -1413,7 +1413,7 @@
 \end{definition}
 
 \begin{theorem}{10.3.1}[Asymptotic distribution of the LRT --- Simple $H_0$]
-  For testing $H_0: \theta = \theta_0$ versus $H_1: \theta \neq \theta_0$, suppose $X_1, ..., X_n$
+  For testing $H_0: \theta = \theta_0$ versus $H_1: \theta \neq \theta_0$, suppose $X_1, \ldots, X_n$
   are iid $f(x | \theta)$, $\hat{\theta}$ is the MLE of $\theta$, and $f(x | \theta)$ satisfies
   the regularity conditions of Miscellanea 10.6.2. Then under $H_0$, as $n \rightarrow \infty$,
   \begin{equation*}
@@ -1461,7 +1461,7 @@
 \end{align}
 
 \subsubsection*{Distribution of the variance estimator}
-Let $Z_1, Z_2, ..., Z_n$ be $\mathcal{N}(\mu, \sigma^{2})$
+Let $Z_1, Z_2, \ldots, Z_n$ be $\mathcal{N}(\mu, \sigma^{2})$
 and let
 \[
   S^2 = \frac{1}{n-1} \sum_{i = 1}^{n} (Z_i - \bar{Z})^{2},
