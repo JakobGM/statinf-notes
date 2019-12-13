@@ -212,7 +212,7 @@
 \begin{theorem}{3.6.1}[Chebychev's Inequality]
   Let $X$ be a random variable and let $g(x)$ be a nonnegative function. Then, for any $r > 0$,
   $$
-  P\del{g(X) \geq r} \geq \frac{\E{g(X)}}{r}.
+  P\del{g(X) \geq r} \leq \frac{\E{g(X)}}{r}.
   $$
 
   This can be used in order to find the following bounds
@@ -1035,7 +1035,7 @@
   \begin{equation*}
     \od{}{\theta} \mathbb{E}_{\theta} \left[ W(\vec{X}) \right]
     =
-    \int_{\mathcal{X}} \pd{}{\theta} \left[ W(\vec{X}) f(\vec{x} | \theta) \right] \dif{\vec{x}}
+    \int_{\mathcal{X}} \pd{}{\theta} \left[ W(\vec{x}) f(\vec{x} | \theta) \right] \dif{\vec{x}}
   \end{equation*}
   and
   \begin{equation*}
@@ -1081,7 +1081,7 @@
       \left( \pd{}{\theta} \log(f(x | \theta)) \right) f(x | \theta)
     \right] \dif{x}
   \end{gather*}
-  (true fo an exponential family), then
+  (true for an exponential family), then
   \begin{equation*}
     \mathbb{E}_{\theta} \left[ \left(
         \pd{}{\theta} \log (f(X|\theta))
