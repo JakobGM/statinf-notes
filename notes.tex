@@ -235,7 +235,7 @@
   Then the function $f(x, y)$ from $\mathfrak{R}^2$ into $\mathfrak{R}$ defined by
   $f(x, y) = P(X = x, Y = y)$ is called the \textit{joint probability mass function} or
   \textit{joint pmf} of $(X, Y)$. If it is necessary to stress the fact that $f$ is the
-  joint pmf of the vector $(X, Y)$ rather than som other vector, the notation $f_{X,Y}(x, y)$
+  joint pmf of the vector $(X, Y)$ rather than some other vector, the notation $f_{X,Y}(x, y)$
   will be used.
 \end{definition}
 
@@ -447,7 +447,7 @@
   \begin{equation*}
     f(\vec{x}_1, \ldots, \vec{x}_n) = \prod_{i = 1}^{n} f_{\vec{X}_i}(\vec{x}_i).
   \end{equation*}
-  If the $X_i$s are alle one-dimensional, then $X_1, \ldots, X_n$ are called
+  If the $X_i$s are all one-dimensional, then $X_1, \ldots, X_n$ are called
   \textit{mutually independent random variables}.
 \end{definition}
 
@@ -480,7 +480,7 @@
 \begin{corollary}{4.6.9}[]
   Let $X_1, \ldots, X_n$ be mutually independent random variables with mgfs
   $M_{X_1}(t), \ldots, M_{X_n}(t)$. Let $a_1, \ldots, a_n$ and $b_1, \ldots, b_n$
-  bef fixed constants. Let $Z = (a_1 X_1 + b_1) + \ldots + (a_n X_n + b_n)$.
+  be fixed constants. Let $Z = (a_1 X_1 + b_1) + \ldots + (a_n X_n + b_n)$.
   Then the mgf of $Z$ is
   \begin{equation*}
     M_Z(t) = \del{e^{t\del{\sum b_i}}} M_{X_1}(a_1 t) \cdot \ldots \cdot M_{X_n}(a_n t)
@@ -661,7 +661,7 @@
 \end{theorem}
 
 \begin{lemma}{5.3.2}[Facts about chi squared random variables]
-  We use the notation $\chi_p^2$ to denote a chi squared random variable with p degrees of freedom.
+  We use the notation $\chi_p^2$ to denote a chi squared random variable with $p$ degrees of freedom.
   \begin{enumerate}[label=\alph*.]
     \item If $Z$ is a $\mathcal{N}(0, 1)$ random variable, then $Z^{2} \sim \chi_1^2$;
       that is, the square of a standard normal random variable is a chi squared random variable.
@@ -700,7 +700,7 @@
   \end{equation*}
 \end{definition}
 
-\begin{definition}{5.3.6}[Snecedor's F distribution]
+\begin{definition}{5.3.6}[Snedecor's F distribution]
   Let $X_1$, \ldots, $X_n$ be a random sample from a $\mathcal{N}(\mu_X, \sigma_X^2)$ population,
   and let $Y_1, \ldots, Y_m$ be a random sample from an independent $\mathcal{N}(\mu_Y, \sigma_Y^2)$
   population.
@@ -883,7 +883,7 @@
 \section{\large{Principles of Data Reduction}}
 
 \begin{definition}{6.2.0}[Sufficiency Principle]
-  If $T(\vec{X})$ is a sufficient statistic for $\theta$, then any inference abouth $\theta$ should depend on the sample
+  If $T(\vec{X})$ is a sufficient statistic for $\theta$, then any inference about $\theta$ should depend on the sample
   $\vec{X}$ only through the value $T(\vec{X})$. That is, if $\vec{x}$ and $\vec{y}$ are two sample points such that
   $T(\vec{x}) = T(\vec{y})$, then the inference about $\theta$ should be the same whether $\vec{X} = \vec{x}$
   or $\vec{X} = \vec{y}$ is observed.
@@ -933,7 +933,7 @@
   Let $f(\vec{x} | \theta)$ be the pmf or pdf of a sample $\vec{X}$. Suppose there exists a
   function $T(\vec{x})$ such that, for every two sample points $\vec{x}$ and $\vec{y}$,
   the ratio $f(\vec{x} | \theta) / f(\vec{y} | \theta)$ is constant as a function of
-  $\theta$ if and only if $T(\vec{x}) = T(\vec{y})$. Then $T(\vec{X})$ is a minimial
+  $\theta$ if and only if $T(\vec{x}) = T(\vec{y})$. Then $T(\vec{X})$ is a minimal
   sufficient statistic for $\theta$.
 \end{theorem}
 
@@ -1095,7 +1095,7 @@
 
 \begin{corollary}{7.3.15}[Attainment]
   Let $X_1, \ldots, X_n$ be iid $f(x|\theta)$, where $f(x|\theta)$ satisfies the conditions
-  of the Cramér-Rao Theroem. Let $L(\theta|\vec{x}) = \prod_{i=1}^{n} f(x_i | \theta)$
+  of the Cramér-Rao Theorem. Let $L(\theta|\vec{x}) = \prod_{i=1}^{n} f(x_i | \theta)$
   denote the likelihood function. If $W(\vec{X}) = W(X_1, \ldots, X_n)$ is any unbiased
   estimator of $\tau(\theta)$, then $W(\vec{X})$ attains the Cramér-Rao Lower Bound
   if and only if
@@ -1133,7 +1133,7 @@
 \begin{definition}{8.1.2}[Null hypothesis]
   The complementary hypotheses in a hypothesis testing problem are called the
   \textit{null hypothesis} and the \textit{alternative hypothesis}.
-  They are donetd by $H_0$ and $H_1$, respectively.
+  They are denoted by $H_0$ and $H_1$, respectively.
 \end{definition}
 
 \begin{definition}{8.1.3}[Hypothesis testing procedure]
@@ -1243,7 +1243,7 @@
 \begin{definition}{9.1.4}[Coverage probability]
   For an interval estimator $[L(\vec{X}), U(\vec{X})]$ of a parameter $\theta$, the \textit{coverage probability} 
   of $[L(\vec{X}), U(\vec{X})]$ is the probability that the random interval $[L(\vec{X}), U(\vec{X})]$ covers the true
-  parameter, $\theta$. In symbols, it is doneted by either $P_{\theta}(\theta \in [L(\vec{X}), U(\vec{X})])$
+  parameter, $\theta$. In symbols, it is denoted by either $P_{\theta}(\theta \in [L(\vec{X}), U(\vec{X})])$
   or  $P(\theta \in [L(\vec{X}), U(\vec{X})] | \theta)$.
 \end{definition}
 
@@ -1275,7 +1275,7 @@
 \end{definition}
 
 \begin{theorem}{9.2.12}[Pivoting a continous cdf]
-  Let $T$ be a statistic with continous cdf $F_T(t | \theta)$. Let $\alpha_1 + \alpha_2 = \alpha$ with $0 < \alpha < 1$
+  Let $T$ be a statistic with continuous cdf $F_T(t | \theta)$. Let $\alpha_1 + \alpha_2 = \alpha$ with $0 < \alpha < 1$
   be fixed values. Suppose that for each $t \in \mathcal{T}$, the functions $\theta_L(t)$ and $\theta_U(t)$
   can be defined as follows.
   \begin{enumerate}[label=\roman*.]
@@ -1352,7 +1352,7 @@
 \begin{theorem}{10.1.6}[Consistency of MLEs]
   Let \\ $X_1, X_2, \ldots,$ be iid $f(x|\theta)$, and let $L(\theta | \vec{x}) = \prod_{i=1}^{n} f(x_i | \theta)$
   be the likelihood function. Let $\hat{\theta}$ denote thee MLE of $\theta$. Let $\tau(\theta)$ be a
-  continous function of $\theta$. Under teh regularity conditions of Miscellanea 10.6.2 on $f(x | \theta)$
+  continuous function of $\theta$. Under the regularity conditions of Miscellanea 10.6.2 on $f(x | \theta)$
   and, hence, $L(\theta | \vec{x})$, for every $\epsilon > 0$ and every $\theta \in \Theta$,
   \begin{equation*}
     \lim \limits_{n \rightarrow \infty} P_{\theta}( |\tau(\hat{\theta}) - \tau(\theta)| \geq \epsilon) = 0.
@@ -1387,7 +1387,7 @@
 
 \begin{theorem}{10.1.12}[Asymptotic efficiency of MLEs]
   Let $X_1, X_2, \ldots,$ be iid $f(x|\theta)$, let $\hat{\theta}$ denote the MLE of $\theta$, and let
-  $\tau(\theta)$ be a continous function of $\theta$. Under the regularity conditions of Miscellanea
+  $\tau(\theta)$ be a continuous function of $\theta$. Under the regularity conditions of Miscellanea
   10.6.2 on $f(x|\theta)$ and, hence, $L(\theta|\vec{x})$,
   \begin{equation*}
     \sqrt{n} \left[ \tau(\hat{\theta}) - \tau(\theta) \right]
