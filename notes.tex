@@ -1298,7 +1298,7 @@
 \end{theorem}
 
 \begin{theorem}{9.2.14}[Pivoting a discrete cdf]
-  Let $T$ be a discrete statistic with cdf $F_T(t | \theta) = P(Tt \leq t | \theta)$. Let $\alpha_1 + \alpha_2 = \alpha$
+  Let $T$ be a discrete statistic with cdf $F_T(t | \theta) = P(T \leq t | \theta)$. Let $\alpha_1 + \alpha_2 = \alpha$
   with  $0 < \alpha < 1$ be fixed values. Suppose that for each $t \in \mathcal{T}$, $\theta_L(t)$ and $\theta_U(t)$
   can be defined as follows.
   \begin{enumerate}[label=\roman*.]
@@ -1307,14 +1307,14 @@
       \begin{equation*}
         P\left(T \leq t | \theta_U(t)\right) = \alpha_1,
         ~~~
-        P\left(T \geq | \theta_L(t)\right) = \alpha_2.
+        P\left(T \geq t | \theta_L(t)\right) = \alpha_2.
       \end{equation*}
     \item If $F_T(t | \theta)$ is an increasing function of $\theta$ for each $t$, define $\theta_L(t)$ and $\theta_U(t)$
       by
       \begin{equation*}
         P\left(T \geq t | \theta_U(t)\right) = \alpha_1,
         ~~~
-        P\left(T \leq | \theta_L(t)\right) = \alpha_2.
+        P\left(T \leq t | \theta_L(t)\right) = \alpha_2.
       \end{equation*}
   \end{enumerate}
   Then the random interval $[\theta_L(T),  \theta_U(T)]$ is a $1 - \alpha$ confidence interval for $\theta$.
